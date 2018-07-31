@@ -6,21 +6,24 @@ import java.time.LocalTime;
 public class Pedido {
 
     private String nome;
-    private float valorUnitario;
     private int quantidade;
     private LocalDate data;
     private LocalTime hora;
     private float valorTotal;
     private boolean atendido;
+    private Produto produto;
+    private int id;
 
-    public Pedido(String nome, float valorUnitario, int quantidade, LocalDate data, LocalTime hora, float valorTotal, boolean atendido) {
+    public Pedido(Produto produto, String nome, float valorUnitario, int quantidade, LocalDate data, LocalTime hora,
+                  float valorTotal, boolean atendido, int id) {
+        this.produto=produto;
         this.nome = nome;
-        this.valorUnitario = valorUnitario;
         this.quantidade = quantidade;
         this.data = LocalDate.now();
         this.hora = LocalTime.now();
-        this.valorTotal = valorUnitario*quantidade;
+        this.valorTotal = quantidade*produto.getPrecoUnico();
         this.atendido = false;
+        this.id=id;
     }
 
     public String getNome() {
@@ -29,14 +32,6 @@ public class Pedido {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public float getValorUnitario() {
-        return valorUnitario;
-    }
-
-    public void setValorUnitario(float valorUnitario) {
-        this.valorUnitario = valorUnitario;
     }
 
     public int getQuantidade() {
@@ -77,5 +72,34 @@ public class Pedido {
 
     public void setAtendido(boolean atendido) {
         this.atendido = atendido;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "nome='" + nome + '\'' +
+                ", quantidade=" + quantidade +
+                ", data=" + data +
+                ", hora=" + hora +
+                ", valorTotal=" + valorTotal +
+                ", atendido=" + atendido +
+                ", produto=" + produto +
+                '}';
     }
 }

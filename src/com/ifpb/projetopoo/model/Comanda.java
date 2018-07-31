@@ -3,6 +3,7 @@ package com.ifpb.projetopoo.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import com.ifpb.projetopoo.model.Pedido;
 
 public class Comanda {
 
@@ -12,7 +13,7 @@ public class Comanda {
     private static LocalDate data;
     private static int numeroComanda;
 
-    public Comanda(List<Pedido> comanda, float valorTotal, int numeroMesa) {
+    public Comanda(int numeroMesa) {
         numeroComanda+=1;
         comanda=new ArrayList<>();
         this.numeroMesa = numeroMesa;
@@ -29,6 +30,9 @@ public class Comanda {
     }
 
     public float getValorTotal() {
+        for(int i=0;i<comanda.size();i++){
+            this.valorTotal+=comanda.get(i).getValorTotal();
+        }
         return valorTotal;
     }
 
@@ -59,7 +63,27 @@ public class Comanda {
     public static void setNumeroComanda(int numeroComanda) {
         Comanda.numeroComanda = numeroComanda;
     }
-    public void addPedido(Pedido pedido, Pedido novo){
+
+    public void addPedido(Pedido pedido){
         comanda.add(pedido);
+        this.getValorTotal();
+    }
+    public boolean atender(int id) {
+        for (Pedido pedido : comanda) {
+            if (pedido.getId() == id) {
+                pedido.setAtendido(true);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Comanda{" +
+                "comanda=" + comanda +
+                ", valorTotal=" + valorTotal +
+                ", numeroMesa=" + numeroMesa +
+                '}';
     }
 }

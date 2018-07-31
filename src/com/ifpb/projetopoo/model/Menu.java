@@ -2,11 +2,11 @@ package com.ifpb.projetopoo.model;
 
 import java.util.List;
 
-public class Cardapio {
+public class Menu {
 
     private List<Produto> produtos;
 
-    public Cardapio(List<Produto> produtos) {
+    public Menu(List<Produto> produtos) {
         this.produtos = produtos;
     }
 

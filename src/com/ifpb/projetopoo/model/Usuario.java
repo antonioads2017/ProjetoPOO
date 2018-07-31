@@ -91,4 +91,16 @@ public class Usuario {
 
         return Objects.hash(email, senha, nome, dataNascimento, setor, telefone);
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", nome='" + nome + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", setor='" + setor + '\'' +
+                ", telefone='" + telefone + '\'' +
+                '}';
+    }
 }
