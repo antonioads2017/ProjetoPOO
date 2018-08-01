@@ -5,7 +5,6 @@ import java.time.LocalTime;
 
 public class Pedido {
 
-    private String nome;
     private int quantidade;
     private LocalDate data;
     private LocalTime hora;
@@ -13,26 +12,19 @@ public class Pedido {
     private boolean atendido;
     private Produto produto;
     private int id;
+    private int numeroPedido;
 
-    public Pedido(Produto produto, String nome, float valorUnitario, int quantidade, LocalDate data, LocalTime hora,
-                  float valorTotal, boolean atendido, int id) {
+    public Pedido(Produto produto, int quantidade) {
         this.produto=produto;
-        this.nome = nome;
         this.quantidade = quantidade;
         this.data = LocalDate.now();
         this.hora = LocalTime.now();
         this.valorTotal = quantidade*produto.getPrecoUnico();
         this.atendido = false;
-        this.id=id;
+        numeroPedido= ++id;
+
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public int getQuantidade() {
         return quantidade;
@@ -86,20 +78,17 @@ public class Pedido {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     @Override
     public String toString() {
         return "Pedido{" +
-                "nome='" + nome + '\'' +
-                ", quantidade=" + quantidade +
+                "quantidade=" + quantidade +
                 ", data=" + data +
                 ", hora=" + hora +
                 ", valorTotal=" + valorTotal +
                 ", atendido=" + atendido +
                 ", produto=" + produto +
+                ", id=" + id +
+                ", numeroPedido=" + numeroPedido +
                 '}';
     }
 }

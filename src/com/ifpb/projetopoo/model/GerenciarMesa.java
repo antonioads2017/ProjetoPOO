@@ -6,7 +6,7 @@ import java.util.List;
 public class GerenciarMesa {
     private List<Comanda> mesas;
 
-    public GerenciarMesa(List<Comanda> mesas) {
+    public GerenciarMesa() {
         mesas = new ArrayList<>();
     }
 

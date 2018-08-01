@@ -12,13 +12,14 @@ public class Produto {
 
     //CONSTRUTOR
 
-
     public Produto(int codigo, String nome, String descrição, float precoUnico) {
         this.codigo = codigo;
         this.nome = nome;
         this.descrição = descrição;
         this.precoUnico = precoUnico;
     }
+
+
     //GETTER's e SETTER's
 
     public int getCodigo() {
