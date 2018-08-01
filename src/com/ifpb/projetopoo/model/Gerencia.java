@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Gerencia {
-    private List<Comanda> comandas;
+    private static List<Comanda> comandas;
 
-    private void addComanda(Comanda comanda){
+    public static void addComanda(Comanda comanda){
         comandas.add(comanda);
     }
 

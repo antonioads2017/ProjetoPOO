@@ -66,7 +66,16 @@ public class Produto {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(codigo, nome, descrição, precoUnico);
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "codigo=" + codigo +
+                ", nome='" + nome + '\'' +
+                ", descrição='" + descrição + '\'' +
+                ", precoUnico=" + precoUnico +
+                '}';
     }
 }
