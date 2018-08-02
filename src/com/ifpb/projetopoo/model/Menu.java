@@ -18,4 +18,17 @@ public class Menu {
         this.produtos = produtos;
     }
 
+    public void addProduto(Produto produto){
+        produtos.add(produto);
+    }
+
+    public void removeProduto (Produto produto){
+        produtos.remove(produto);
+    }
+
+    public void editarProduto(int index, Produto produto){
+        produtos.set(index, produto);
+    }
+
+
 }

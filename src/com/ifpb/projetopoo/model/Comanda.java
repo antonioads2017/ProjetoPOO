@@ -11,14 +11,19 @@ public class Comanda {
     private float valorTotal;
     private int numeroMesa;
     private static LocalDate data;
+    private static int cod;
     private static int numeroComanda;
 
     public Comanda(int numeroMesa) {
-        numeroComanda+=1;
+        numeroComanda=++cod;
         comanda=new ArrayList<>();
         this.numeroMesa = numeroMesa;
         this.valorTotal=0;
         data=LocalDate.now();
+    }
+
+    public static int getCod() {
+        return cod;
     }
 
     public List<Pedido> getComanda() {
@@ -31,7 +36,7 @@ public class Comanda {
 
     public float getValorTotal() {
         for(int i=0;i<comanda.size();i++){
-            this.valorTotal+=comanda.get(i).getValorTotal();
+            valorTotal+=comanda.get(i).getValorTotal();
         }
         return valorTotal;
     }
@@ -64,10 +69,18 @@ public class Comanda {
         Comanda.numeroComanda = numeroComanda;
     }
 
-    public void addPedido(Pedido pedido){
-        comanda.add(pedido);
-        this.getValorTotal();
+    public Pedido getPedido(int idPedido){
+        for(Pedido pedido:comanda){
+            if(pedido.getNumeroPedido()==idPedido){
+                return pedido;
+            }
+        }return null;
     }
+
+    public void addPedido(Pedido pedido){
+        comanda.add(pedido);;
+    }
+
     public boolean atender(int id) {
         for (Pedido pedido : comanda) {
             if (pedido.getId() == id) {

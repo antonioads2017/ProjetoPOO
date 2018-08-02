@@ -2,6 +2,7 @@ package com.ifpb.projetopoo.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 public class Pedido {
 
@@ -11,7 +12,7 @@ public class Pedido {
     private float valorTotal;
     private boolean atendido;
     private Produto produto;
-    private int id;
+    private static int id;
     private int numeroPedido;
 
     public Pedido(Produto produto, int quantidade) {
@@ -76,6 +77,20 @@ public class Pedido {
 
     public int getId() {
         return id;
+    }
+
+    public int getNumeroPedido() {
+        return numeroPedido;
+    }
+
+    public void setNumeroPedido(int numeroPedido) {
+        this.numeroPedido = numeroPedido;
+    }
+
+    public void modificarAtendido(){
+        if(!isAtendido()){
+            setAtendido(true);
+        }
     }
 
     @Override
