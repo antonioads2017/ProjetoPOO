@@ -5,20 +5,31 @@ import java.util.ArrayList;
 import java.util.List;
 import com.ifpb.projetopoo.model.Pedido;
 
+/** A classe Comanda contêm a modelagem de comanda para o dominio.
+ * A Classe contêm um ArrayList de Pedidos.
+ * Adiciona Pedidos e verifica o atendimento.
+ * @author Antonio Miguel
+ * @author Laires Pereira
+ * @version 1.0
+ * @since 29-07-2018
+ */
+
 public class Comanda {
 
     private List<Pedido> comanda;
-    private float valorTotal;
     private int numeroMesa;
     private static LocalDate data;
     private static int cod;
     private static int numeroComanda;
 
+    /**
+     * Construtor
+     * */
+
     public Comanda(int numeroMesa) {
         numeroComanda=++cod;
         comanda=new ArrayList<>();
         this.numeroMesa = numeroMesa;
-        this.valorTotal=0;
         data=LocalDate.now();
     }
 
@@ -26,6 +37,10 @@ public class Comanda {
         return cod;
     }
 
+    /**
+     * Retorna a comanda
+     * @return comanda
+     */
     public List<Pedido> getComanda() {
         return comanda;
     }
@@ -34,16 +49,6 @@ public class Comanda {
         this.comanda = comanda;
     }
 
-    public float getValorTotal() {
-        for(int i=0;i<comanda.size();i++){
-            valorTotal+=comanda.get(i).getValorTotal();
-        }
-        return valorTotal;
-    }
-
-    public void setValorTotal(float valorTotal) {
-        this.valorTotal = valorTotal;
-    }
 
     public int getNumeroMesa() {
         return numeroMesa;
@@ -69,6 +74,11 @@ public class Comanda {
         Comanda.numeroComanda = numeroComanda;
     }
 
+    /**
+     * Procura pedido na comanda
+     * @param idPedido = numero do id de um pedido
+     * @return pedido, retorna um objeto pedido
+     */
     public Pedido getPedido(int idPedido){
         for(Pedido pedido:comanda){
             if(pedido.getNumeroPedido()==idPedido){
@@ -77,26 +87,48 @@ public class Comanda {
         }return null;
     }
 
+    /**
+     * @return Valor Total retorna o valor total do pedido.
+     */
+    public float getValorTotal (){
+         float ValorTotal=0;
+         for (int i=0; i<comanda.size(); i++){
+             ValorTotal+=comanda.get(i).getValorTotal();
+         }
+         return ValorTotal;
+
+    }
+
+    /**
+     * Adiciona um pedido na comanda desejada.
+     * @param pedido
+     */
     public void addPedido(Pedido pedido){
         comanda.add(pedido);;
     }
 
-    public boolean atender(int id) {
-        for (Pedido pedido : comanda) {
-            if (pedido.getId() == id) {
-                pedido.setAtendido(true);
-                return true;
+    /**
+     * Checa se todos foram atendidos
+     * @return true, se todos foram atendidos.
+     * @return false, se todos nao foram atendidos.
+     */
+    public boolean Atendidos(){
+        boolean check = true;
+        for (Pedido pedido: comanda){
+            if(!pedido.isAtendido()){
+                check=false;
+                break;
             }
-        }
-        return false;
+        }return check;
     }
+
 
     @Override
     public String toString() {
-        return "Comanda{" +
-                "comanda=" + comanda +
-                ", valorTotal=" + valorTotal +
-                ", numeroMesa=" + numeroMesa +
-                '}';
+        String saida = "Mesa Nº"+numeroMesa+" -- Comanda Nº"+numeroComanda+" --Data "+data+ "-- \n";
+        for(Pedido pedido:comanda){
+            saida+=pedido.toString();
+        }saida+= "Valor Total="+getValorTotal()+"\n";
+        return saida;
     }
 }
