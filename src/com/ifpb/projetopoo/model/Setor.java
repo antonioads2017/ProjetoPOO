@@ -2,10 +2,10 @@ package com.ifpb.projetopoo.model;
 
 public enum Setor {
 
-    atendimento(1),
-    cozinha(2),
-    caixa(3),
-    gerencia(4);
+    ATENDIMENTO(1),
+    COZINHA(2),
+    CAIXA(3),
+    GERENCIA(4);
 
     public final int codSetor;
 

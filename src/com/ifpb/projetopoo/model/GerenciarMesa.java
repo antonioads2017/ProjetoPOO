@@ -4,10 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GerenciarMesa {
+
     private List<Comanda> mesas;
 
     public GerenciarMesa() {
-        mesas = new ArrayList<>();
+        mesas = new ArrayList<Comanda>();
+    }
+
+    public List<Comanda> getMesas() {
+        return mesas;
+    }
+
+    public void setMesas(List<Comanda> mesas) {
+        this.mesas = mesas;
+    }
+
+    public Comanda pegaComanda (int numeroMesa){
+        for (Comanda comanda: mesas){
+            if(comanda.getNumeroMesa()==numeroMesa){
+                return comanda;
+            }
+        }return null;
     }
 
     public boolean abrirComanda(int numeroMesa){
@@ -15,6 +32,7 @@ public class GerenciarMesa {
         for(Comanda comanda: mesas){
             if(comanda.getNumeroMesa() == numeroMesa){
                 temComanda=true;
+                break;
 
             }
         }
@@ -56,20 +74,46 @@ public class GerenciarMesa {
          }
      }
 
+     public boolean fazPedido(int numeroMesa, Pedido pedido, Cozinha cozinha){
+        for(Comanda comanda:mesas){
+            if(comanda.getNumeroMesa()==numeroMesa){
+                comanda.addPedido(pedido);
+                cozinha.addPedido(pedido);
+                return true;
+            }
+        }return false;
+     }
+
      public boolean fecharComanda(int numeroMesa){
         int index=-1;
         for (Comanda comanda: mesas){
             if(comanda.getNumeroMesa()==numeroMesa) {
-                Gerencia.addComanda(comanda);
-                index = mesas.indexOf(comanda);
-                System.out.println("Valor Total: " + comanda.getValorTotal());
-                break;
+                if (comanda.Atendidos()) {
+                    Gerencia.addComanda(comanda);
+                    index = mesas.indexOf(comanda);
+                    System.out.println("Valor Total: " + comanda.getValorTotal());
+                    break;
+                }
+                else break;
             }
         }
          if(index!=-1){
             mesas.remove(index);
             return true;
-         }return false;
+         }else return false;
+     }
+
+     public boolean modificarPedido (int idPedido, int numeroMesa, Pedido pedidoNovo){
+        for(Comanda comanda:mesas){
+            if(comanda.getNumeroMesa()==numeroMesa){
+                List<Pedido> mesa = comanda.getComanda();
+                for (Pedido pedido:mesa){
+                    int index = mesa.indexOf(pedido);
+                    mesa.add(index,pedidoNovo);
+                    return true;
+                }
+            }
+        }return false;
      }
 
 

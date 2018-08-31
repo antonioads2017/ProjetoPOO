@@ -20,7 +20,6 @@ public class Pedido {
         this.quantidade = quantidade;
         this.data = LocalDate.now();
         this.hora = LocalTime.now();
-        this.valorTotal = quantidade*produto.getPrecoUnico();
         this.atendido = false;
         numeroPedido= ++id;
 
@@ -52,6 +51,8 @@ public class Pedido {
     }
 
     public float getValorTotal() {
+        float valorTotal=0;
+        valorTotal=quantidade*produto.getPrecoUnico();
         return valorTotal;
     }
 

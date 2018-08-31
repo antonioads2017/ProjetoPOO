@@ -1,11 +1,7 @@
 package com.ifpb.projetopoo.view;
 
 
-import com.ifpb.projetopoo.model.GerenciarMesa;
-import com.ifpb.projetopoo.model.Pedido;
-import com.ifpb.projetopoo.model.Produto;
-import com.ifpb.projetopoo.model.Cozinha;
-import com.ifpb.projetopoo.model.Usuario;
+import com.ifpb.projetopoo.model.*;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -13,7 +9,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
     // Criar novo usuário
-        Usuario usuario = new Usuario("lairoca", "123", "Lairoca", LocalDate.now(), "tal", "4002-8922");
+        Usuario usuario = new Usuario("lairoca", "123", "Lairoca", LocalDate.now(), Setor.COZINHA, "4002-8922");
 
         // Adicionando uns produtin nessa budega
         Produto[] produtos = {
@@ -27,7 +23,6 @@ public class App {
         boolean sistemaLigado = true;
         int opçãoDoUsuario;
         Scanner scan = new Scanner(System.in);
-
         // Aqui é o sistema
         while(sistemaLigado) {
             System.out.println("Digite 1 para adicionar um produto!");

@@ -3,6 +3,7 @@ package com.ifpb.projetopoo.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+
 // INICIO DA MODELAGEM
 public class Usuario {
 
@@ -11,12 +12,12 @@ public class Usuario {
     private String senha;
     private String nome;
     private LocalDate dataNascimento;
-    private String setor;
+    private Setor setor;
     private String telefone;
 
     //CONSTRUTOR
 
-    public Usuario(String email, String senha, String nome, LocalDate dataNascimento, String setor, String telefone) {
+    public Usuario(String email, String senha, String nome, LocalDate dataNascimento, Setor setor, String telefone) {
         this.email = email;
         this.senha = senha;
         this.nome = nome;
@@ -57,24 +58,28 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
     }
 
-    public String getSetor() {
+    public Setor getSetor() {
         return setor;
     }
 
-    public boolean setSetor(String setor) {
-        if(setor.toLowerCase() == "cozinha") {
-            this.setor = "cozinha";
-        } else if(setor.toLowerCase() == "gerencia") {
-            this.setor = "gerencia";
-        } else if(setor.toLowerCase() == "atendimento") {
-            this.setor = "atendimento";
-        } else if(setor.toLowerCase() == "caixa") {
-            this.setor = "caixa";
-        } else {
-            return false;
-        }
-        return true;
+    public void setSetor(Setor setor) {
+        this.setor = setor;
     }
+
+
+    public void setSetor(int setor) {
+        if (setor == Setor.ATENDIMENTO.getCodSetor()) {
+            setSetor(Setor.ATENDIMENTO);
+        } else if (setor == Setor.COZINHA.getCodSetor()) {
+            setSetor(Setor.COZINHA);
+        } else if (setor == Setor.CAIXA.getCodSetor()) {
+            setSetor(Setor.CAIXA);
+        } else if (setor == Setor.GERENCIA.getCodSetor()){
+            setSetor(Setor.GERENCIA);
+        }
+    }
+
+
 
     public String getTelefone() {
         return telefone;
@@ -82,6 +87,10 @@ public class Usuario {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public boolean autenticUsuario(String email, String senha){
+        return Objects.equals(this.email,email)&&Objects.equals(this.senha, senha);
     }
 
     @Override

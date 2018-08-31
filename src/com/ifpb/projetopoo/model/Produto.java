@@ -58,12 +58,6 @@ public class Produto {
         this.precoUnico = precoUnico;
     }
 
-    public boolean criaProduto(Produto p) {
-        produtos.add(p);
-        return true;
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

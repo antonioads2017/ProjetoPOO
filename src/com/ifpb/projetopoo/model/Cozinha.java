@@ -11,10 +11,10 @@ public class Cozinha {
         pedidos=new ArrayList<>();
     }
 
-    public List<Pedido> getPedidos(int idPedido) {
+    public Pedido getPedido(int idPedido) {
         for (Pedido pedido: pedidos){
             if(pedido.getId()==idPedido){
-                return pedidos;
+                return pedido;
             }
         }
         return null;
@@ -24,15 +24,25 @@ public class Cozinha {
         this.pedidos = pedidos;
     }
 
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
     public void addPedido (Pedido pedido){
         pedidos.add(pedido);
     }
 
-    //FALTA TERMINAR DE IMPLEMENTAR
     public boolean atenderPedido(int idPedido){
-        if(getPedidos(idPedido)==null){
+        if(getPedido(idPedido)==null){
             return false;
-        }return true;
-
+        }if(!getPedido(idPedido).isAtendido()){
+            for(Pedido pedido: pedidos){
+                if(pedido.getNumeroPedido()==idPedido){
+                    pedido.modificarAtendido();
+                    pedidos.remove(pedido);
+                    return true;
+                }
+            }
+        }return false;
     }
 }

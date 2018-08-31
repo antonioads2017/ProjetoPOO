@@ -50,5 +50,9 @@ public class Menu {
         produtos.set(index, produto);
     }
 
+    public int tamanho(){
+        return produtos.size();
+    }
+
 
 }

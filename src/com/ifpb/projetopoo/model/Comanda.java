@@ -79,7 +79,7 @@ public class Comanda {
      * @param idPedido = numero do id de um pedido
      * @return pedido, retorna um objeto pedido
      */
-    public Pedido getPedido(int idPedido){
+    public Pedido getPedido (int idPedido){
         for(Pedido pedido:comanda){
             if(pedido.getNumeroPedido()==idPedido){
                 return pedido;
