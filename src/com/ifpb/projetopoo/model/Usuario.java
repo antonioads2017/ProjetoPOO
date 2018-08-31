@@ -61,8 +61,19 @@ public class Usuario {
         return setor;
     }
 
-    public void setSetor(String setor) {
-        this.setor = setor;
+    public boolean setSetor(String setor) {
+        if(setor.toLowerCase() == "cozinha") {
+            this.setor = "cozinha";
+        } else if(setor.toLowerCase() == "gerencia") {
+            this.setor = "gerencia";
+        } else if(setor.toLowerCase() == "atendimento") {
+            this.setor = "atendimento";
+        } else if(setor.toLowerCase() == "caixa") {
+            this.setor = "caixa";
+        } else {
+            return false;
+        }
+        return true;
     }
 
     public String getTelefone() {

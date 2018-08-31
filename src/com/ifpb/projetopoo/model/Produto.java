@@ -1,9 +1,13 @@
 package com.ifpb.projetopoo.model;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 // MODELAGEM DO PRODUTO
 public class Produto {
+
+    private ArrayList<Produto> produtos;
+
     //ATRIBUTOS
     private int codigo;
     private String nome;
@@ -12,11 +16,11 @@ public class Produto {
 
     //CONSTRUTOR
 
-    public Produto(int codigo, String nome, String descrição, float precoUnico) {
-        this.codigo = codigo;
+    public Produto(String nome, String descrição, float precoUnico, int codigo) {
         this.nome = nome;
         this.descrição = descrição;
         this.precoUnico = precoUnico;
+        this.codigo = codigo;
     }
 
 
@@ -53,6 +57,12 @@ public class Produto {
     public void setPrecoUnico(float precoUnico) {
         this.precoUnico = precoUnico;
     }
+
+    public boolean criaProduto(Produto p) {
+        produtos.add(p);
+        return true;
+    }
+
 
     @Override
     public boolean equals(Object o) {
