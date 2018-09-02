@@ -10,6 +10,7 @@ public class Usuario {
     //ATRIBUTOS PARA USUARIO
     private String email;
     private String senha;
+    private String CPF;
     private String nome;
     private LocalDate dataNascimento;
     private Setor setor;
@@ -17,15 +18,25 @@ public class Usuario {
 
     //CONSTRUTOR
 
-    public Usuario(String email, String senha, String nome, LocalDate dataNascimento, Setor setor, String telefone) {
+    public Usuario(String email, String senha, String CPF, String nome, LocalDate dataNascimento, Setor setor, String telefone) {
         this.email = email;
         this.senha = senha;
+        this.CPF=CPF;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.setor = setor;
         this.telefone = telefone;
     }
     //GETTER's e SETTER's
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -100,27 +111,27 @@ public class Usuario {
         Usuario usuario = (Usuario) o;
         return Objects.equals(email, usuario.email) &&
                 Objects.equals(senha, usuario.senha) &&
+                Objects.equals(CPF, usuario.CPF) &&
                 Objects.equals(nome, usuario.nome) &&
                 Objects.equals(dataNascimento, usuario.dataNascimento) &&
-                Objects.equals(setor, usuario.setor) &&
+                setor == usuario.setor &&
                 Objects.equals(telefone, usuario.telefone);
+    }
+
+    @Override
+    public String toString() {
+        return "|------Usuario "+nome+"------|\n"+
+                "CPF: "+CPF+
+                "\nEmail: "+email+
+                "\nData de Nascimento: "+dataNascimento+
+                "\n Setor: "+setor+
+                "\n-----------------------------";
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(email, senha, nome, dataNascimento, setor, telefone);
-    }
+        return Objects.hash(email, senha, CPF, nome, dataNascimento, setor, telefone);
 
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "email='" + email + '\'' +
-                ", senha='" + senha + '\'' +
-                ", nome='" + nome + '\'' +
-                ", dataNascimento=" + dataNascimento +
-                ", setor='" + setor + '\'' +
-                ", telefone='" + telefone + '\'' +
-                '}';
     }
 }

@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
     // Criar novo usuário
-        Usuario usuario = new Usuario("lairoca", "123", "Lairoca", LocalDate.now(), Setor.COZINHA, "4002-8922");
         GerenciarMesa mesinha = new GerenciarMesa();
         Cozinha cozinha = new Cozinha();
         ArrayList<Produto> produtos = new ArrayList();
@@ -24,18 +23,18 @@ public class App {
         Scanner scan = new Scanner(System.in);
         // Aqui é o sistema
         while(sistemaLigado) {
+            System.out.println("|--------------ATENDIMENTO-------------|\n\n\n");
             System.out.println("Digite 1 para fazer um pedido!");
             System.out.println("Digite 2 para abrir uma comanda para uma mesa: ");
             System.out.println("Digite 3 para fechar uma comanda: ");
             System.out.println("Digite 4 para atender um pedido");
             System.out.println("Digite 5 para ver os pedidos de uma mesa");
-            System.out.println("Digite 6 para testar autenticação: ");
-            System.out.println("Digite 7 para ver comandas num intervalo de tempo");
-            System.out.println("Digite 8 para ver pedidos não atendidos.");
+            System.out.println("Digite 6 para ver comandas num intervalo de tempo");
+            System.out.println("Digite 7 para ver pedidos não atendidos.");
             System.out.println("Digite 0 para sair do sistema.");
             opçãoDoUsuario = scan.nextInt();
 
-            if(opçãoDoUsuario>8){
+            if(opçãoDoUsuario>7){
                 System.out.println("Erro - Opção Inválida, pressione enter");
                 scan.nextLine();
             }
@@ -88,15 +87,7 @@ public class App {
                     numeroMesa = scan.nextInt();
                     mesinha.viewPedido(numeroMesa);
                     break;
-
-                case 6: System.out.println("Digite o email");
-                    String email = scan.next();
-                    System.out.println("Informe a senha");
-                    String senha = scan.next();
-                    System.out.println(usuario.autenticUsuario(email, senha));
-                    break;
-                    //terminar de implementar
-                case 7: // precisa testar isso aqui
+                case 6: // precisa testar isso aqui
 
                     System.out.println("informe o ano");
                     int ano = scan.nextInt();
@@ -117,7 +108,7 @@ public class App {
                     Gerencia.betweenn(inicio, fim);
                     break;
 
-                case 8:
+                case 7:
                     System.out.println("Digite o número da mesa:");
                     numeroMesa = scan.nextInt();
                     System.out.println(mesinha.pegaComanda(numeroMesa).pedidosNaoAtendidos());
