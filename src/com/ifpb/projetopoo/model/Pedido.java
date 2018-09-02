@@ -100,10 +100,8 @@ public class Pedido {
                 "quantidade=" + quantidade +
                 ", data=" + data +
                 ", hora=" + hora +
-                ", valorTotal=" + valorTotal +
                 ", atendido=" + atendido +
                 ", produto=" + produto +
-                ", id=" + id +
                 ", numeroPedido=" + numeroPedido +
                 '}';
     }

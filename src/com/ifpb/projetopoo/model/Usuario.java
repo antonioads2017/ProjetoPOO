@@ -90,7 +90,7 @@ public class Usuario {
     }
 
     public boolean autenticUsuario(String email, String senha){
-        return Objects.equals(this.email,email)&&Objects.equals(this.senha, senha);
+        return Objects.equals(this.email,email)&& Objects.equals(this.senha, senha);
     }
 
     @Override

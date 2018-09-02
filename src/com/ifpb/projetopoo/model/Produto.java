@@ -58,6 +58,10 @@ public class Produto {
         this.precoUnico = precoUnico;
     }
 
+    public boolean criaProduto(Produto p) {
+        return true;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -76,11 +80,6 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Produto{" +
-                "codigo=" + codigo +
-                ", nome='" + nome + '\'' +
-                ", descrição='" + descrição + '\'' +
-                ", precoUnico=" + precoUnico +
-                '}';
+        return "Produto "+codigo+" = Nome: "+nome+"| Descrição: "+descrição+"| Preço: "+precoUnico+";";
     }
 }

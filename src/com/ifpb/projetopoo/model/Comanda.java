@@ -122,6 +122,18 @@ public class Comanda {
         }return check;
     }
 
+    public String pedidosNaoAtendidos (){
+        String s = "";
+        for (Pedido pedido: comanda){
+            if(!pedido.isAtendido()){
+                s+=pedido.toString();
+            }
+        }
+        if(s.equals("")){
+            System.out.println("Todos os pedidos foram atendidos!");
+        }return s;
+    }
+
 
     @Override
     public String toString() {

@@ -21,7 +21,7 @@ public class Menu {
      * Construtor
      * */
 
-    public Menu(List<Produto> produtos) {
+    public Menu() {
         produtos = new ArrayList<Produto>();
     }
 
@@ -42,8 +42,8 @@ public class Menu {
         produtos.add(produto);
     }
 
-    public void removeProduto (Produto produto){
-        produtos.remove(produto);
+    public void removeProduto (int indice){
+        produtos.remove(indice);
     }
 
     public void editarProduto(int index, Produto produto){
@@ -52,6 +52,10 @@ public class Menu {
 
     public int tamanho(){
         return produtos.size();
+    }
+
+    public boolean isVazio(){
+        return produtos.isEmpty();
     }
 
 
