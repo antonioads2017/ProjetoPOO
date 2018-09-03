@@ -2,6 +2,7 @@ package com.ifpb.projetopoo.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.ifpb.*;
 
 public class GerenciarMesa {
 

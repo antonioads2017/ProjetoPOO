@@ -11,11 +11,13 @@ public class App {
     // Criar novo usuário
         GerenciarMesa mesinha = new GerenciarMesa();
         Cozinha cozinha = new Cozinha();
-        ArrayList<Produto> produtos = new ArrayList();
+        Gerencia gerencia = new Gerencia();
+       ArrayList<Produto> produtos = new ArrayList();
 
-        for(Produto p : produtos) {
-            System.out.println(p);
-        }
+               produtos.add( new Produto("Bolo", "chocolate", 28, 25236));
+                produtos.add(new Produto("dogão", "salxixa", 5,58));
+
+
 
         // Manter a interface funcionando.
         boolean sistemaLigado = true;
@@ -56,6 +58,8 @@ public class App {
                         mesinha.abrirComanda(numMesa);
                         System.out.println("Foi aberta uma comanda para a mesa: " + numMesa);
                         mesinha.fazPedido(numMesa,p, cozinha);
+                    } else {
+                        mesinha.fazPedido(numMesa, p, cozinha);
                     }
                     System.out.println(mesinha.pegaComanda(numMesa));
                     break;
@@ -72,6 +76,7 @@ public class App {
                 case 3: System.out.println("Digite o numero da mesa para fechar a comanda: ");
                     numeroMesa = scan.nextInt();
                     if(mesinha.fecharComanda(numeroMesa)){
+                        gerencia.addComanda(mesinha.pegaComanda(numeroMesa));
                         System.out.println("Comanda fechada!!!");
                     } else {
                         System.out.println("Erro");
@@ -105,7 +110,7 @@ public class App {
                     dia = scan.nextInt();
                     LocalDate fim = LocalDate.of(ano,mes,dia);
                     System.out.println("Fim:"+ fim);
-                    Gerencia.betweenn(inicio, fim);
+                    System.out.println(Gerencia.betweenn(inicio, fim));
                     break;
 
                 case 7:
