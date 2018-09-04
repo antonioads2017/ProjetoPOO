@@ -3,9 +3,15 @@ package com.ifpb.projetopoo.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+/** A classe Pedido contêm a modelagem de pedidos dos clientes
+ * @author Antonio Miguel
+ * @author Laires Pereira
+ * @version 1.0
+ * @since 29-07-2018
+ */
 
-// INICIO DA MODELAGEM
 public class Usuario {
+
 
     //ATRIBUTOS PARA USUARIO
     private String email;
@@ -16,7 +22,9 @@ public class Usuario {
     private Setor setor;
     private String telefone;
 
-    //CONSTRUTOR
+    /**
+     * Construtor
+     * */
 
     public Usuario(String email, String senha, String CPF, String nome, LocalDate dataNascimento, Setor setor, String telefone) {
         this.email = email;
@@ -77,7 +85,10 @@ public class Usuario {
         this.setor = setor;
     }
 
-
+    /**
+     * Metodo que seta o setor pelo codigo.
+     * @param setor
+     */
     public void setSetor(int setor) {
         if (setor == Setor.ATENDIMENTO.getCodSetor()) {
             setSetor(Setor.ATENDIMENTO);
@@ -100,6 +111,11 @@ public class Usuario {
         this.telefone = telefone;
     }
 
+    /**Metodo que valida email e senha do usuário criado.
+     * @param email
+     * @param senha
+     * @return return a comparação de igualdade do email e senha.
+     */
     public boolean autenticUsuario(String email, String senha){
         return Objects.equals(this.email,email)&& Objects.equals(this.senha, senha);
     }

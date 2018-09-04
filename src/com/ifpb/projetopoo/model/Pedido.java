@@ -2,9 +2,17 @@ package com.ifpb.projetopoo.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
+
+/** A classe Pedido contêm a modelagem de pedidos dos clientes
+ * @author Antonio Miguel
+ * @author Laires Pereira
+ * @version 1.0
+ * @since 29-07-2018
+ */
 
 public class Pedido {
+
+
 
     private int quantidade;
     private LocalDate data;
@@ -14,6 +22,10 @@ public class Pedido {
     private Produto produto;
     private static int id;
     private int numeroPedido;
+
+    /**
+     * Construtor da classe
+     * */
 
     public Pedido(Produto produto, int quantidade) {
         this.produto=produto;
@@ -49,6 +61,11 @@ public class Pedido {
     public void setHora(LocalTime hora) {
         this.hora = hora;
     }
+
+    /**
+     * getValorTotal soma o valor de todos os pedidos
+     * @return valorTotal a soma do preço de todos os pedidos
+     * */
 
     public float getValorTotal() {
         float valorTotal=0;
@@ -88,6 +105,11 @@ public class Pedido {
         this.numeroPedido = numeroPedido;
     }
 
+    /**
+     * modificarAtendido altera a informação se este pedido ja foi ou não atendido
+     * @return true se conseguir definir como ja atendido
+     * */
+
     public void modificarAtendido(){
         if(!isAtendido()){
             setAtendido(true);
@@ -96,13 +118,13 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido{" +
-                "quantidade=" + quantidade +
-                ", data=" + data +
-                ", hora=" + hora +
-                ", atendido=" + atendido +
-                ", produto=" + produto +
-                ", numeroPedido=" + numeroPedido +
-                '}';
-    }
+        String atendimento = "";
+        if(atendido==true){
+            atendimento="Sim";
+        }else atendimento="Não";
+        return "Pedido "+numeroPedido+" = |Produto: "+produto+
+                "| Data e Hora:"+data+hora+"| Atendido: "+
+                atendimento+"| Valor Total: "+getValorTotal();
+
+                }
 }

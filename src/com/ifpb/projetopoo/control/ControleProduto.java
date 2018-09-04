@@ -4,11 +4,20 @@ import com.ifpb.projetopoo.model.*;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
-
+/** A classe Pedido contêm a modelagem de controle de produtos.
+ * @author Antonio Miguel
+ * @author Laires Pereira
+ * @version 1.0
+ * @since 29-07-2018
+ */
 public class ControleProduto {
+
 
     private Menu menu;
 
+    /**
+     * CONSTRUTOR
+     */
     public ControleProduto(){
         menu = new Menu();
     }
@@ -20,6 +29,9 @@ public class ControleProduto {
         return menu;
     }
 
+    /** Metodo para ler os dados e armazenar o produto.
+     * @return retorna um objeto de Produto.
+     */
     public Produto lerDadosProduto(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Informe o codigo");
@@ -34,6 +46,9 @@ public class ControleProduto {
         return produtonovo;
     }
 
+    /**Metodo que pega o objeto produto e armazena na lista.
+     * @return retorna um boolean que diz que foi cadastrado o produto.
+     */
     public boolean cadastrarNovoProduto(){
         Produto p = lerDadosProduto();
         menu.addProduto(p);
@@ -41,6 +56,10 @@ public class ControleProduto {
         return true;
     }
 
+    /**Metodo que consulta um Produto.
+     * @param codigo variavel que recebe o codigo do produto.
+     * @return retorna um string de produto.
+     */
     public String consultarProduto(int codigo){
         List<Produto> produtos = menu.getProdutos();
         for(Produto produto:produtos){
@@ -51,6 +70,10 @@ public class ControleProduto {
 
     }
 
+    /**Metodo que atualiza um produto.
+     * @param indice recebe o indice do produto na lista.
+     * @return retorna um boolean se atualizou ou nao o produto.
+     */
     public boolean atualizarProduto(int indice){
         if(indice>menu.tamanho()-1){
             return false;
@@ -60,6 +83,10 @@ public class ControleProduto {
         return true;
     }
 
+    /**Metodo que deleta o Produto.
+     * @param indice recebe um indice do produto na lista.
+     * @return retorna um boolean se deletou ou nao um Produto.
+     */
     public boolean deletarProduto(int indice){
         if(indice>menu.tamanho()-1){
             return false;

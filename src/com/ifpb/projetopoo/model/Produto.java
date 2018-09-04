@@ -2,19 +2,25 @@ package com.ifpb.projetopoo.model;
 
 import java.util.ArrayList;
 import java.util.Objects;
-
-// MODELAGEM DO PRODUTO
+/** A classe Pedido contêm a modelagem de pedidos dos clientes
+ * @author Antonio Miguel
+ * @author Laires Pereira
+ * @version 1.0
+ * @since 29-07-2018
+ */
 public class Produto {
+
+
 
     private ArrayList<Produto> produtos;
 
-    //ATRIBUTOS
     private int codigo;
     private String nome;
     private String descrição;
     private float precoUnico;
 
-    //CONSTRUTOR
+    /**CONSTRUTOR
+     */
 
     public Produto(String nome, String descrição, float precoUnico, int codigo) {
         this.nome = nome;
@@ -23,8 +29,6 @@ public class Produto {
         this.codigo = codigo;
     }
 
-
-    //GETTER's e SETTER's
 
     public int getCodigo() {
         return codigo;
