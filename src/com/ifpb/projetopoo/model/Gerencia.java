@@ -2,6 +2,7 @@ package com.ifpb.projetopoo.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /** A classe Gerencia contêm a modelagem de comanda para o dominio.

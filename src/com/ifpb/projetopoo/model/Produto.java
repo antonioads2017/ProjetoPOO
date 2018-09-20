@@ -1,6 +1,8 @@
 package com.ifpb.projetopoo.model;
 
+import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 /** A classe Pedido contêm a modelagem de pedidos dos clientes
  * @author Antonio Miguel
@@ -8,11 +10,7 @@ import java.util.Objects;
  * @version 1.0
  * @since 29-07-2018
  */
-public class Produto {
-
-
-
-    private ArrayList<Produto> produtos;
+public class Produto implements Serializable {
 
     private int codigo;
     private String nome;
@@ -22,11 +20,11 @@ public class Produto {
     /**CONSTRUTOR
      */
 
-    public Produto(String nome, String descrição, float precoUnico, int codigo) {
+    public Produto(int codigo,String nome, String descrição, float precoUnico) {
         this.nome = nome;
         this.descrição = descrição;
         this.precoUnico = precoUnico;
-        this.codigo = codigo;
+        this.codigo=codigo;
     }
 
 
@@ -66,24 +64,22 @@ public class Produto {
         return true;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Produto produto = (Produto) o;
-        return codigo == produto.codigo &&
-                Float.compare(produto.precoUnico, precoUnico) == 0 &&
-                Objects.equals(nome, produto.nome) &&
-                Objects.equals(descrição, produto.descrição);
+        return codigo == produto.codigo;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigo, nome, descrição, precoUnico);
+        return Objects.hash(codigo);
     }
 
     @Override
     public String toString() {
-        return "Produto = Nome: "+nome+"| Descrição: "+descrição+"| Preço: "+precoUnico+";";
+        return "Produto = Codigo: "+codigo+" Nome: "+nome+"| Descrição: "+descrição+"| Preço: "+precoUnico+"\n";
     }
 }

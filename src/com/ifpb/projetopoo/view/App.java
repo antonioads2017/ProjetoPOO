@@ -1,23 +1,25 @@
 package com.ifpb.projetopoo.view;
 
 
+import com.ifpb.projetopoo.dao.ProdutoDao;
 import com.ifpb.projetopoo.model.*;
+import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
     // Criar novo usuário
         GerenciarMesa mesinha = new GerenciarMesa();
         Cozinha cozinha = new Cozinha();
+        ProdutoDao produtos = null;
         Gerencia gerencia = new Gerencia();
-       ArrayList<Produto> produtos = new ArrayList();
-
-               produtos.add( new Produto("Bolo", "chocolate", 28, 25236));
-                produtos.add(new Produto("dogão", "salxixa", 5,58));
-
-
+        try {
+            produtos = new ProdutoDao();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // Manter a interface funcionando.
         boolean sistemaLigado = true;
@@ -43,17 +45,15 @@ public class App {
 
             switch (opçãoDoUsuario){
                 case 1: System.out.println("Faça um pedido:");
-                    for(Produto p : produtos){
-                        System.out.println(produtos.indexOf(p) + 1 + " Nome: " + p.getNome() + " Preço: " + p.getPrecoUnico());
-                    }
+                    System.out.println(produtos.getProdutos());
                     System.out.println("Digite o numero do produto.");
                     int numProduto = scan.nextInt();
-                    System.out.println("Você selecionou: " + produtos.get(numProduto - 1));
+                    System.out.println("Você selecionou: " + produtos.ConsultaProduto(numProduto));
                     System.out.println("Informe a quantidade: ");
                     int quantidadePedido = scan.nextInt();
                     System.out.println("Informe a mesa: ");
                     int numMesa = scan.nextInt();
-                    Pedido p = new Pedido(produtos.get(numProduto - 1), quantidadePedido);
+                    Pedido p = new Pedido(produtos.ConsultaProduto(numProduto), quantidadePedido);
                     if(mesinha.pegaComanda(numMesa) == null) {
                         mesinha.abrirComanda(numMesa);
                         System.out.println("Foi aberta uma comanda para a mesa: " + numMesa);
@@ -110,7 +110,7 @@ public class App {
                     dia = scan.nextInt();
                     LocalDate fim = LocalDate.of(ano,mes,dia);
                     System.out.println("Fim:"+ fim);
-                    System.out.println(Gerencia.betweenn(inicio, fim));
+                    System.out.println(gerencia.betweenn(inicio, fim));
                     break;
 
                 case 7:

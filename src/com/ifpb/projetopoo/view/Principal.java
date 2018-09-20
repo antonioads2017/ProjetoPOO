@@ -1,14 +1,22 @@
 package com.ifpb.projetopoo.view;
 
 import com.ifpb.projetopoo.control.*;
+import com.ifpb.projetopoo.dao.ProdutoDao;
 import com.ifpb.projetopoo.model.*;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Principal {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         ControleUsuario usuario = new ControleUsuario();
-        ControleProduto produtos = new ControleProduto();
+        //ControleProduto produtos = new ControleProduto();
+        ProdutoDao produtos = null;
+        try {
+            produtos = new ProdutoDao();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         boolean inicio = true;
         int selecaoMenu;
         int selecao;
@@ -100,9 +108,9 @@ public class Principal {
             System.out.println("\n");
         }
     }
-    public static  void gerencia(ControleProduto produtos){
+    public static  void gerencia(ProdutoDao produtos) throws IOException, ClassNotFoundException {
         boolean continua = true;
-        int indice;
+        int codigo;
         while (continua){
             System.out.println("|----------GERÊNCIA----------|");
             Scanner scanner = new Scanner(System.in);
@@ -120,22 +128,22 @@ public class Principal {
                         break;
 
                     case 2:
-                        produtos.cadastrarNovoProduto();
+                        produtos.AddProduto();
                         break;
 
                     case 3:
                         System.out.println("Qual produto deseja atualizar?\n");
                         System.out.println(produtos);
-                        indice=scanner.nextInt();
-                        if(produtos.atualizarProduto(indice-1)){
+                        codigo=scanner.nextInt();
+                        if(produtos.atualizarProduto(codigo)){
                             System.out.println("Produto atualizado com sucesso!");
                         }else System.out.println("ERRO!");
                         break;
                     case 4:
                         System.out.println("Qual produto deseja excluir?\n");
                         System.out.println(produtos);
-                        indice=scanner.nextInt();
-                        if(produtos.deletarProduto(indice-1)){
+                        codigo=scanner.nextInt();
+                        if(produtos.deletarProduto(codigo)){
                             System.out.println("Produto excluido com sucesso!");
                         }else System.out.println("ERRO!");
                         break;

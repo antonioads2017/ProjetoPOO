@@ -32,24 +32,12 @@ public class ControleProduto {
     /** Metodo para ler os dados e armazenar o produto.
      * @return retorna um objeto de Produto.
      */
-    public Produto lerDadosProduto(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Informe o codigo");
-        int codigo = scanner.nextInt();
-        System.out.println("Infome o nome:");
-        String nome = scanner.next();
-        System.out.println("Descreva:");
-        String descrição = scanner.next();
-        System.out.println("Informe o preço");
-        float preço = scanner.nextFloat();
-        Produto produtonovo = new Produto(nome, descrição,preço,codigo);
-        return produtonovo;
-    }
+
 
     /**Metodo que pega o objeto produto e armazena na lista.
      * @return retorna um boolean que diz que foi cadastrado o produto.
      */
-    public boolean cadastrarNovoProduto(){
+    /*public boolean cadastrarNovoProduto(){
         Produto p = lerDadosProduto();
         menu.addProduto(p);
         System.out.println("Produto Cadastrado");
@@ -60,7 +48,7 @@ public class ControleProduto {
      * @param codigo variavel que recebe o codigo do produto.
      * @return retorna um string de produto.
      */
-    public String consultarProduto(int codigo){
+  /*  public String consultarProduto(int codigo){
         List<Produto> produtos = menu.getProdutos();
         for(Produto produto:produtos){
             if(Objects.equals(codigo, produto.getCodigo())){
@@ -74,7 +62,7 @@ public class ControleProduto {
      * @param indice recebe o indice do produto na lista.
      * @return retorna um boolean se atualizou ou nao o produto.
      */
-    public boolean atualizarProduto(int indice){
+    /*public boolean atualizarProduto(int indice){
         if(indice>menu.tamanho()-1){
             return false;
         }
@@ -105,7 +93,7 @@ public class ControleProduto {
         int controle = 0;
         for(Produto produto:produtos){
             controle++;
-            s+=controle+"=   \n"+produto.toString();
+            s+=controle+"= "+produto.toString();
         }
         return s;
     }

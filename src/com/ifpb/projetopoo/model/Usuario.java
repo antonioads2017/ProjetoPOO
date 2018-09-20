@@ -120,19 +120,6 @@ public class Usuario {
         return Objects.equals(this.email,email)&& Objects.equals(this.senha, senha);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Usuario usuario = (Usuario) o;
-        return Objects.equals(email, usuario.email) &&
-                Objects.equals(senha, usuario.senha) &&
-                Objects.equals(CPF, usuario.CPF) &&
-                Objects.equals(nome, usuario.nome) &&
-                Objects.equals(dataNascimento, usuario.dataNascimento) &&
-                setor == usuario.setor &&
-                Objects.equals(telefone, usuario.telefone);
-    }
 
     @Override
     public String toString() {
@@ -145,9 +132,17 @@ public class Usuario {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(email, usuario.email) &&
+                Objects.equals(senha, usuario.senha) &&
+                Objects.equals(CPF, usuario.CPF);
+    }
+
+    @Override
     public int hashCode() {
-
-        return Objects.hash(email, senha, CPF, nome, dataNascimento, setor, telefone);
-
+        return Objects.hash(email, senha, CPF);
     }
 }

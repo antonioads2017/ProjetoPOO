@@ -22,7 +22,7 @@ public class Menu {
      * */
 
     public Menu() {
-        produtos = new ArrayList<Produto>();
+        produtos = getProdutos();
     }
 
     /** Retorno de um objeto inteiro de produtos
