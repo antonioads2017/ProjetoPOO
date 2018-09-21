@@ -2,33 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eca3e032-75df-4c1b-93a7-abbb85ac4cc5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/ProdutoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaInicial.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaInicial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/UsuarioDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/control/ControleProduto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/control/ControleProduto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/control/ControleUsuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/control/ControleUsuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Comanda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Comanda.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Cozinha.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Cozinha.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Gerencia.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Gerencia.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/GerenciarMesa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/GerenciarMesa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Pedido.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Pedido.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Produto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Produto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Setor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Setor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Produto" beforeDir="false" afterPath="$PROJECT_DIR$/Produto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/control/ControleUsuario.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Usuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/Principal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/control/ControleProduto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/control/ControleProduto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Comanda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Comanda.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Gerencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Gerencia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Produto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaInicial.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/control/ControleProduto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/control/ControleUsuario.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/Principal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaInicial.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaInicial.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,22 +36,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="24" />
+          <entry key="form" value="1" />
+          <entry key="java" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="24" />
+          <entry key="JAVA" value="30" />
+          <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="3629" />
+          <entry key="java" value="4877" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3629" />
+          <entry key="JAVA" value="4877" />
         </counts>
       </usages-collector>
     </session>
@@ -75,36 +63,45 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/ProdutoDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="80" column="34" lean-forward="true" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
+            <state relative-caret-position="780">
+              <caret line="52" column="21" lean-forward="true" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Usuario.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1542">
-              <caret line="134" column="37" selection-start-line="134" selection-start-column="37" selection-end-line="134" selection-end-column="37" />
-              <folding>
-                <element signature="e#3483#3484#0" expanded="true" />
-                <element signature="e#3537#3538#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/App.java">
+        <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/UsuarioDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="112" column="42" lean-forward="true" selection-start-line="112" selection-start-column="42" selection-end-line="112" selection-end-column="42" />
+            <state relative-caret-position="356">
+              <caret line="139" column="12" selection-start-line="139" selection-start-column="12" selection-end-line="139" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Usuario.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="135" column="37" selection-start-line="135" selection-start-column="37" selection-end-line="135" selection-end-column="37" />
+              <folding>
+                <element signature="e#3480#3481#0" expanded="true" />
+                <element signature="e#3529#3530#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/Principal.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-885">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -135,17 +132,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Menu.java" />
-        <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/control/ControleUsuario.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Produto.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/control/ControleProduto.java" />
-        <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/Principal.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/ProdutoDao.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/GerenciarMesa.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Comanda.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/GerenciaDao.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/App.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Gerencia.java" />
+        <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaInicial.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Usuario.java" />
+        <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/UsuarioDao.java" />
+        <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/control/ControleUsuario.java" />
+        <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/Principal.java" />
       </list>
     </option>
   </component>
@@ -155,7 +154,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -281,12 +280,12 @@
       <updated>1537465797048</updated>
       <workItem from="1537465799699" duration="136000" />
       <workItem from="1537466238711" duration="70000" />
-      <workItem from="1537466600564" duration="16996000" />
+      <workItem from="1537466600564" duration="20053000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17202000" />
+    <option name="totallyTimeSpent" value="20259000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1366" height="741" extended-state="6" />
@@ -321,13 +320,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/control/ControleUsuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-66">
-          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-30">
@@ -348,13 +340,6 @@
           <folding>
             <element signature="e#117955#117956#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/Principal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="9" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="18" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -443,24 +428,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/ProdutoDao.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaInicial.form">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaInicial.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="80" column="34" lean-forward="true" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Usuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="135" column="37" selection-start-line="135" selection-start-column="37" selection-end-line="135" selection-end-column="37" />
+          <folding>
+            <element signature="e#3480#3481#0" expanded="true" />
+            <element signature="e#3529#3530#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/UsuarioDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="139" column="12" selection-start-line="139" selection-start-column="12" selection-end-line="139" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Usuario.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/control/ControleUsuario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1542">
-          <caret line="134" column="37" selection-start-line="134" selection-start-column="37" selection-end-line="134" selection-end-column="37" />
+        <state relative-caret-position="1226">
+          <caret line="155" column="2" lean-forward="true" selection-start-line="155" selection-start-column="2" selection-end-line="155" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/ProdutoDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" column="21" lean-forward="true" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
           <folding>
-            <element signature="e#3483#3484#0" expanded="true" />
-            <element signature="e#3537#3538#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/Principal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-885">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>

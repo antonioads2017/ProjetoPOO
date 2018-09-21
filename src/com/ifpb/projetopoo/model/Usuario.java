@@ -1,5 +1,6 @@
 package com.ifpb.projetopoo.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -10,7 +11,7 @@ import java.util.Objects;
  * @since 29-07-2018
  */
 
-public class Usuario {
+public class Usuario implements Serializable {
 
 
     //ATRIBUTOS PARA USUARIO
@@ -137,12 +138,11 @@ public class Usuario {
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
         return Objects.equals(email, usuario.email) &&
-                Objects.equals(senha, usuario.senha) &&
-                Objects.equals(CPF, usuario.CPF);
+                Objects.equals(senha, usuario.senha);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, senha, CPF);
+        return Objects.hash(email, senha);
     }
 }

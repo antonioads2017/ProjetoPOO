@@ -1,19 +1,18 @@
 package com.ifpb.projetopoo.view;
 
-import com.ifpb.projetopoo.control.*;
 import com.ifpb.projetopoo.dao.ProdutoDao;
-import com.ifpb.projetopoo.model.*;
+import com.ifpb.projetopoo.dao.UsuarioDao;
 
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Principal {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        ControleUsuario usuario = new ControleUsuario();
-        //ControleProduto produtos = new ControleProduto();
+        UsuarioDao usuarios = null;
         ProdutoDao produtos = null;
         try {
             produtos = new ProdutoDao();
+            usuarios = new UsuarioDao();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -39,7 +38,7 @@ public class Principal {
                         String email = scanner.next();
                         System.out.println("Senha:");
                         String senha = scanner.next();
-                        if(usuario.autenticarUsuario(email,senha)){
+                        if(usuarios.autenticarUsuario(email,senha)){
                             System.out.println("Usuario logado");
                             boolean inicio2 = true;
                             while (inicio2){
@@ -62,7 +61,7 @@ public class Principal {
                                             email = scanner.next();
                                             System.out.println("Digite sua senha");
                                             senha=scanner.next();
-                                            if(usuario.atualizarEsseUsuario(email,senha)){
+                                            if(usuarios.atualizarUsuario(email,senha)){
                                                 System.out.println("Usuario Atualizado");
                                             }
                                             else {
@@ -78,7 +77,7 @@ public class Principal {
                                             }
                                             else{
                                                 if(escolha==1){
-                                                    usuario.excluirEsseUsuario(email,senha);
+                                                    usuarios.excluirUsuario(email,senha);
                                                     System.out.println("Usuario Excluido com Sucesso");
                                                     inicio2=false;
                                                 }
@@ -93,7 +92,7 @@ public class Principal {
                         break;
                     case 2:
                         System.out.println("|-------CADASTRO-------|");
-                        usuario.cadastrarUsuario();
+                        usuarios.cadastrarUsuario();
                         break;
 
                     case 0: inicio=false;
