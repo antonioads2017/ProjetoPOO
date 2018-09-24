@@ -1,5 +1,7 @@
 package com.ifpb.projetopoo.view;
 
+import com.ifpb.projetopoo.Exception.CPFInvalidoException;
+import com.ifpb.projetopoo.Exception.PrecoInvalidoException;
 import com.ifpb.projetopoo.dao.ProdutoDao;
 import com.ifpb.projetopoo.dao.UsuarioDao;
 
@@ -7,13 +9,15 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Principal {
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args){
         UsuarioDao usuarios = null;
         ProdutoDao produtos = null;
         try {
             produtos = new ProdutoDao();
             usuarios = new UsuarioDao();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         boolean inicio = true;
@@ -52,7 +56,13 @@ public class Principal {
                                 else{
                                     switch (selecaoMenu){
                                         case 1:
-                                            gerencia(produtos);
+                                            try {
+                                                gerencia(produtos);
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            } catch (ClassNotFoundException e) {
+                                                e.printStackTrace();
+                                            }
                                             break;
 
                                         case 2:
@@ -61,12 +71,19 @@ public class Principal {
                                             email = scanner.next();
                                             System.out.println("Digite sua senha");
                                             senha=scanner.next();
-                                            if(usuarios.atualizarUsuario(email,senha)){
-                                                System.out.println("Usuario Atualizado");
+                                            try {
+                                                if(usuarios.atualizarUsuario(email,senha)){
+                                                    System.out.println("Usuario Atualizado");
+                                                }
+                                                else {
+                                                    System.out.println("ERRO");
+                                                }
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            } catch (CPFInvalidoException e) {
+                                                e.printStackTrace();
                                             }
-                                            else {
-                                                System.out.println("ERRO");
-                                            }break;
+                                            break;
 
                                         case 3:
                                             System.out.println("Deseja realmente excluir?\n");
@@ -92,7 +109,13 @@ public class Principal {
                         break;
                     case 2:
                         System.out.println("|-------CADASTRO-------|");
-                        usuarios.cadastrarUsuario();
+                        try {
+                            usuarios.cadastrarUsuario();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (CPFInvalidoException e) {
+                            e.printStackTrace();
+                        }
                         break;
 
                     case 0: inicio=false;
@@ -127,7 +150,11 @@ public class Principal {
                         break;
 
                     case 2:
-                        produtos.AddProduto();
+                        try {
+                            produtos.AddProduto();
+                        } catch (PrecoInvalidoException e) {
+                            e.printStackTrace();
+                        }
                         break;
 
                     case 3:

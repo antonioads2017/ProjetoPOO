@@ -1,35 +1,35 @@
 package com.ifpb.projetopoo.dao;
 
+import com.ifpb.projetopoo.Exception.PrecoInvalidoException;
 import com.ifpb.projetopoo.model.Produto;
+import com.ifpb.projetopoo.model.Usuario;
+
 import java.io.*;
 import java.util.*;
 
 public class ProdutoDao {
 
     private File arquivoProduto;
-    private static int codigo;
+    private Set<Produto> produtos;
 
-    public ProdutoDao() throws IOException {
+    public ProdutoDao() throws IOException, ClassNotFoundException {
         arquivoProduto = new File("Produto");
         if(!arquivoProduto.exists()){
             arquivoProduto.createNewFile();
         }
-    }
-
-    public Set<Produto> getProdutos() throws IOException, ClassNotFoundException {
-        if(arquivoProduto.length()>0){
-            try(ObjectInputStream in = new ObjectInputStream(
-                    new FileInputStream(arquivoProduto))){
-                return (Set<Produto>) in.readObject();
-            }
-        }else{
-            return new HashSet<>();
+        else{
+            if(arquivoProduto.length()>0) {
+                try (ObjectInputStream in = new ObjectInputStream(
+                        new FileInputStream(arquivoProduto))) {
+                    produtos = (Set<Produto>) in.readObject();
+                }
+            }else produtos = new HashSet<>();
         }
     }
 
-    public boolean AddProduto() throws IOException, ClassNotFoundException {
+
+    public boolean AddProduto() throws IOException, PrecoInvalidoException {
         Produto produto = lerDadosProduto();
-        Set<Produto> produtos = getProdutos();
         for(Produto produto1:produtos){
             if(Objects.equals(produto.getCodigo(),produto1.getCodigo())){
                 System.out.println("Código "+produto.getCodigo()+" já existe, Tente com outro codigo!");
@@ -44,8 +44,7 @@ public class ProdutoDao {
         }
     }
 
-    public Produto ConsultaProduto(int codigo) throws IOException, ClassNotFoundException {
-        Set<Produto> produtos = getProdutos();
+    public Produto ConsultaProduto(int codigo){
         for(Produto produto: produtos){
             if(Objects.equals(codigo,produto.getCodigo())){
                 return produto;
@@ -53,8 +52,7 @@ public class ProdutoDao {
         }return null;
     }
 
-    public boolean deletarProduto(int codigo) throws IOException, ClassNotFoundException {
-        Set<Produto> produtos = getProdutos();
+    public boolean deletarProduto(int codigo) throws IOException{
         for(Produto produto: produtos){
             if(Objects.equals(codigo,produto.getCodigo())){
                 if(produtos.remove(produto)) {
@@ -64,12 +62,15 @@ public class ProdutoDao {
             }
         }return false;
     }
-    public boolean atualizarProduto(int codigo) throws IOException, ClassNotFoundException {
-        Set<Produto> produtos = getProdutos();
+    public boolean atualizarProduto(int codigo) throws IOException{
         for (Produto produto : produtos){
             if(Objects.equals(codigo,produto.getCodigo())){
                 deletarProduto(codigo);
-                AddProduto();
+                try {
+                    AddProduto();
+                } catch (PrecoInvalidoException e) {
+                    e.printStackTrace();
+                }
                 return true;
             }
         }return false;
@@ -84,7 +85,7 @@ public class ProdutoDao {
 
 
 
-    public Produto lerDadosProduto() {
+    public Produto lerDadosProduto() throws PrecoInvalidoException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Informe o codigo");
         int codigo=scanner.nextInt();
@@ -94,6 +95,9 @@ public class ProdutoDao {
         String descrição = scanner.next();
         System.out.println("Informe o preço");
         float preço = scanner.nextFloat();
+        if(preço<=0){
+            throw new PrecoInvalidoException("Preço invalido, insera um valor positivo!");
+        }
         Produto produtonovo = new Produto(codigo,nome, descrição,preço);
         return produtonovo;
     }
@@ -102,14 +106,6 @@ public class ProdutoDao {
     public String toString() {
 
         String s = "|---------PRODUTOS---------| \n";
-        Set<Produto> produtos = null;
-        try {
-            produtos = getProdutos();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
         if(produtos.isEmpty()){
             return "Menu Vazio";
         }

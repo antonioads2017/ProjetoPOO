@@ -1,8 +1,8 @@
 package com.ifpb.projetopoo.model;
 
+import com.ifpb.projetopoo.Exception.PrecoInvalidoException;
+
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 /** A classe Pedido contêm a modelagem de pedidos dos clientes
  * @author Antonio Miguel
@@ -20,7 +20,7 @@ public class Produto implements Serializable {
     /**CONSTRUTOR
      */
 
-    public Produto(int codigo,String nome, String descrição, float precoUnico) {
+    public Produto(int codigo,String nome, String descrição, float precoUnico){
         this.nome = nome;
         this.descrição = descrição;
         this.precoUnico = precoUnico;
@@ -56,7 +56,7 @@ public class Produto implements Serializable {
         return precoUnico;
     }
 
-    public void setPrecoUnico(float precoUnico) {
+    public void setPrecoUnico(float precoUnico){
         this.precoUnico = precoUnico;
     }
 

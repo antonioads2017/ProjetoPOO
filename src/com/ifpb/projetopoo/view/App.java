@@ -45,7 +45,7 @@ public class App {
 
             switch (opçãoDoUsuario){
                 case 1: System.out.println("Faça um pedido:");
-                    System.out.println(produtos.getProdutos());
+                    System.out.println(produtos);
                     System.out.println("Digite o numero do produto.");
                     int numProduto = scan.nextInt();
                     System.out.println("Você selecionou: " + produtos.ConsultaProduto(numProduto));

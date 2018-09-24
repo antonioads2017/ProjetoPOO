@@ -1,5 +1,6 @@
 package com.ifpb.projetopoo.dao;
 
+import com.ifpb.projetopoo.Exception.CPFInvalidoException;
 import com.ifpb.projetopoo.model.Produto;
 import com.ifpb.projetopoo.model.Setor;
 import com.ifpb.projetopoo.model.Usuario;
@@ -15,21 +16,21 @@ import java.util.Set;
 public class UsuarioDao {
 
     private File arquivoUsuario;
+    private Set<Usuario> usuarios;
 
-    public UsuarioDao() throws IOException {
+    public UsuarioDao() throws IOException, ClassNotFoundException {
         arquivoUsuario = new File("Usuario");
         if(!arquivoUsuario.exists()){
             arquivoUsuario.createNewFile();
         }
-    }
-
-    public Set<Usuario> getUsuarios() throws IOException, ClassNotFoundException {
-        if(arquivoUsuario.length()>0){
-            try(ObjectInputStream in = new ObjectInputStream(
-                    new FileInputStream(arquivoUsuario))){
-                return (Set<Usuario>) in.readObject();
-            }
-        }return new HashSet<>();
+        else{
+            if(arquivoUsuario.length()>0) {
+                try (ObjectInputStream in = new ObjectInputStream(
+                        new FileInputStream(arquivoUsuario))) {
+                    usuarios = (Set<Usuario>) in.readObject();
+                }
+            }else usuarios = new HashSet<>();
+        }
     }
 
     public Usuario lerDadosUsuario(){
@@ -73,10 +74,12 @@ public class UsuarioDao {
         return newUser;
     }
 
-    public boolean cadastrarUsuario() throws IOException, ClassNotFoundException {
+    public boolean cadastrarUsuario() throws IOException, CPFInvalidoException {
         Usuario usuario = lerDadosUsuario();
-        Set<Usuario> usuarios = getUsuarios();
         for (Usuario u: usuarios){
+            if(Objects.equals(usuario.getCPF(),u.getCPF())){
+                throw new CPFInvalidoException("CPF já existe!");
+            }
             if(Objects.equals(usuario,u)){
                 System.out.println("Email ou senha existentes! Tente novamente");
                 return false;
@@ -88,8 +91,7 @@ public class UsuarioDao {
         }return false;
     }
 
-    public boolean autenticarUsuario(String email, String senha) throws IOException, ClassNotFoundException {
-        Set<Usuario> usuarios = getUsuarios();
+    public boolean autenticarUsuario(String email, String senha){
         for(Usuario usuario:usuarios){
             if(usuario.autenticUsuario(email,senha)){
                 return true;
@@ -98,8 +100,7 @@ public class UsuarioDao {
         return false;
     }
 
-    public Usuario consultarUsuario(String email, String senha) throws IOException, ClassNotFoundException {
-        Set<Usuario> usuarios = getUsuarios();
+    public Usuario consultarUsuario(String email, String senha){
         for(Usuario usuario:usuarios){
             if(usuario.autenticUsuario(email,senha)){
                 System.out.println(usuario);
@@ -111,14 +112,12 @@ public class UsuarioDao {
 
     }
 
-    public boolean atualizarUsuario(String email, String senha) throws IOException, ClassNotFoundException {
-        Set<Usuario> usuarios = getUsuarios();
+    public boolean atualizarUsuario(String email, String senha) throws IOException, CPFInvalidoException {
         usuarios.remove(consultarUsuario(email,senha));
         return cadastrarUsuario();
     }
 
-    public boolean excluirUsuario(String emai, String senha) throws IOException, ClassNotFoundException {
-        Set<Usuario> usuarios = getUsuarios();
+    public boolean excluirUsuario(String emai, String senha){
         return usuarios.remove(consultarUsuario(emai, senha));
     }
 
@@ -133,14 +132,6 @@ public class UsuarioDao {
     @Override
     public String toString() {
         String s = "|-------------Usuarios-------------|\n";
-        Set<Usuario> usuarios = null;
-        try {
-            usuarios = getUsuarios();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
         if(usuarios.isEmpty()){
             return "Nao existe usuários cadastrados";
         }
