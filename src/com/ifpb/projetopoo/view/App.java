@@ -1,6 +1,7 @@
 package com.ifpb.projetopoo.view;
 
 
+import com.ifpb.projetopoo.dao.GerenciaDao;
 import com.ifpb.projetopoo.dao.ProdutoDao;
 import com.ifpb.projetopoo.model.*;
 import java.io.IOException;
@@ -9,15 +10,24 @@ import java.util.Scanner;
 
 
 public class App {
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) {
     // Criar novo usuário
         GerenciarMesa mesinha = new GerenciarMesa();
         Cozinha cozinha = new Cozinha();
         ProdutoDao produtos = null;
-        Gerencia gerencia = new Gerencia();
+        GerenciaDao gerencia = null;
+        try {
+            gerencia = new GerenciaDao();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         try {
             produtos = new ProdutoDao();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -76,7 +86,13 @@ public class App {
                 case 3: System.out.println("Digite o numero da mesa para fechar a comanda: ");
                     numeroMesa = scan.nextInt();
                     if(mesinha.fecharComanda(numeroMesa)){
-                        gerencia.addComanda(mesinha.pegaComanda(numeroMesa));
+                        try {
+                            gerencia.addGerencia(mesinha.pegaComanda(numeroMesa));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }catch (NullPointerException nx){
+                            nx.printStackTrace();
+                        }
                         System.out.println("Comanda fechada!!!");
                     } else {
                         System.out.println("Erro");
@@ -110,7 +126,12 @@ public class App {
                     dia = scan.nextInt();
                     LocalDate fim = LocalDate.of(ano,mes,dia);
                     System.out.println("Fim:"+ fim);
-                    System.out.println(gerencia.betweenn(inicio, fim));
+                    try{
+                        System.out.println(Gerencia.betweenn(inicio, fim));
+                    }catch (NullPointerException ex){
+                        System.out.println("algum erro ae");
+                    }
+
                     break;
 
                 case 7:
@@ -126,7 +147,7 @@ public class App {
         }limpaTelaRTA(); // RTA = Recurso Tecnico Alternativo - GAMBIARRA
     }
     public static void limpaTelaRTA(){
-        for(int i =0; i<50;i++){
+        for(int i =0; i<30;i++){
             System.out.println("\n");
         }
     }
