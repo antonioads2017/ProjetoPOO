@@ -1,12 +1,11 @@
 package com.ifpb.projetopoo.dao;
 
+import com.ifpb.projetopoo.Exception.DataInvalidaException;
 import com.ifpb.projetopoo.model.Comanda;
 import com.ifpb.projetopoo.model.Gerencia;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GerenciaDao {
 
@@ -15,10 +14,9 @@ public class GerenciaDao {
 
     public GerenciaDao() throws IOException, ClassNotFoundException {
         arquivoGerencia = new File("Gerencia");
-
+        gerencia = new Gerencia();
         if(!arquivoGerencia.exists()){
             arquivoGerencia.createNewFile();
-            gerencia = new Gerencia();
         }else{
             if(arquivoGerencia.length()>0) {
                 try (ObjectInputStream in = new ObjectInputStream(
@@ -43,7 +41,11 @@ public class GerenciaDao {
     }
 
     public String between(LocalDate inicio, LocalDate fim){
-        return gerencia.betweenn(inicio,fim);
+        try {
+            return gerencia.betweenn(inicio,fim);
+        } catch (DataInvalidaException e) {
+            e.printStackTrace();
+        }return null;
     }
 
 }

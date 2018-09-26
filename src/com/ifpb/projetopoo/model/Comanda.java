@@ -141,7 +141,7 @@ public class Comanda implements Serializable {
         String saida = "Mesa Nº"+numeroMesa+" -- Comanda Nº"+numeroComanda+" --Data "+data+ "-- \n";
         for(Pedido pedido:comanda){
             saida+=pedido.toString();
-        }saida+= "Valor da Comanda="+getValorTotal()+"\n";
-        return saida;
+        }return saida+= "Valor da Comanda="+getValorTotal()+"\n";
+
     }
 }

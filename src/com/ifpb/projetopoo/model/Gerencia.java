@@ -1,12 +1,11 @@
 package com.ifpb.projetopoo.model;
 
-import com.ifpb.projetopoo.dao.GerenciaDao;
+import com.ifpb.projetopoo.Exception.DataInvalidaException;
 
-import java.io.IOException;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /** A classe Gerencia contêm a modelagem de comanda para o dominio.
@@ -47,7 +46,8 @@ public class Gerencia implements Serializable {
      * @param fim recebe uma data final.
      * @return retorna uma String das comandas do certo periodo.
      */
-    public String betweenn (LocalDate comeco, LocalDate fim){
+    public String betweenn (LocalDate comeco, LocalDate fim) throws DataInvalidaException {
+        if(!comeco.isBefore(fim)) throw new DataInvalidaException("Data inicio maior que a data fim, tente de novo!");
         String resposta = "|";
         for (Comanda comanda: comandas){
             if((comanda.getData().compareTo(comeco)>=0)&&(comanda.getData().compareTo(fim)<=0)){
@@ -55,5 +55,6 @@ public class Gerencia implements Serializable {
             }
         }return resposta;
     }
+
 
 }

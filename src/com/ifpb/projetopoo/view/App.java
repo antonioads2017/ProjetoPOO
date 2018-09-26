@@ -1,6 +1,7 @@
 package com.ifpb.projetopoo.view;
 
 
+import com.ifpb.projetopoo.Exception.DataInvalidaException;
 import com.ifpb.projetopoo.dao.GerenciaDao;
 import com.ifpb.projetopoo.dao.ProdutoDao;
 import com.ifpb.projetopoo.model.*;
@@ -130,11 +131,7 @@ public class App {
                     dia = scan.nextInt();
                     LocalDate fim = LocalDate.of(ano,mes,dia);
                     System.out.println("Fim:"+ fim);
-                    try{
-                        System.out.println(gerencia.between(inicio, fim));
-                    }catch (NullPointerException ex){
-                        System.out.println("algum erro ae");
-                    }
+                    System.out.println(gerencia.between(inicio, fim));
 
                     break;
 
