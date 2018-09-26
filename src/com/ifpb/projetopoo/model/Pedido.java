@@ -1,5 +1,6 @@
 package com.ifpb.projetopoo.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -10,7 +11,7 @@ import java.time.LocalTime;
  * @since 29-07-2018
  */
 
-public class Pedido {
+public class Pedido implements Serializable {
 
 
 

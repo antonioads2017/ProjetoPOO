@@ -1,5 +1,8 @@
 package com.ifpb.projetopoo.model;
 
+import com.ifpb.projetopoo.dao.GerenciaDao;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 /** A classe GerenciarMesa contêm a modelagem de metodos para gerenciar
@@ -153,12 +156,12 @@ public class GerenciarMesa {
       *
       * */
 
-     public boolean fecharComanda(int numeroMesa){
+     public boolean fecharComanda(int numeroMesa, GerenciaDao gerencia) throws IOException {
         int index=-1;
         for (Comanda comanda: mesas){
             if(comanda.getNumeroMesa()==numeroMesa) {
                 if (comanda.Atendidos()) {
-                    Gerencia.addComanda(comanda);
+                    gerencia.addGerencia(comanda);
                     index = mesas.indexOf(comanda);
                     System.out.println("Valor Total: " + comanda.getValorTotal());
                     break;

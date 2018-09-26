@@ -85,17 +85,21 @@ public class App {
 
                 case 3: System.out.println("Digite o numero da mesa para fechar a comanda: ");
                     numeroMesa = scan.nextInt();
-                    if(mesinha.fecharComanda(numeroMesa)){
-                        try {
-                            gerencia.addGerencia(mesinha.pegaComanda(numeroMesa));
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }catch (NullPointerException nx){
-                            nx.printStackTrace();
+                    try {
+                        if(mesinha.fecharComanda(numeroMesa,gerencia)){
+                            try {
+                                gerencia.addGerencia(mesinha.pegaComanda(numeroMesa));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }catch (NullPointerException nx){
+                                nx.printStackTrace();
+                            }
+                            System.out.println("Comanda fechada!!!");
+                        } else {
+                            System.out.println("Erro");
                         }
-                        System.out.println("Comanda fechada!!!");
-                    } else {
-                        System.out.println("Erro");
+                    } catch (IOException e) {
+                        System.err.println("ERROR!");
                     }
                     break;
 
@@ -127,7 +131,7 @@ public class App {
                     LocalDate fim = LocalDate.of(ano,mes,dia);
                     System.out.println("Fim:"+ fim);
                     try{
-                        System.out.println(Gerencia.betweenn(inicio, fim));
+                        System.out.println(gerencia.between(inicio, fim));
                     }catch (NullPointerException ex){
                         System.out.println("algum erro ae");
                     }

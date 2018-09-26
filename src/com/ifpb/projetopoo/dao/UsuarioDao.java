@@ -96,7 +96,7 @@ public class UsuarioDao {
             if(usuario.autenticUsuario(email,senha)){
                 return true;
             }
-        };
+        }
         return false;
     }
 

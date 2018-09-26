@@ -3,6 +3,7 @@ package com.ifpb.projetopoo.model;
 import com.ifpb.projetopoo.dao.GerenciaDao;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -17,23 +18,27 @@ import java.util.List;
  * @since 29-07-2018
  */
 
-public class Gerencia {
+public class Gerencia implements Serializable {
 
 
     /**
      * CONSTRUTOR
      */
-    private static List<Comanda> comandas = new ArrayList<>();
+    private List<Comanda> comandas;
 
-    public static void addComanda(Comanda comanda) {
+    public Gerencia(){
+        comandas = new ArrayList<>();
+    }
+
+    public void addComanda(Comanda comanda) {
         comandas.add(comanda);
     }
 
-    public static void setComandas(List<Comanda> novas){
+    public void setComandas(List<Comanda> novas){
         comandas = novas;
 
     }
-    public static List<Comanda> getComandas(){
+    public List<Comanda> getComandas(){
         return comandas;
     }
 
@@ -42,8 +47,8 @@ public class Gerencia {
      * @param fim recebe uma data final.
      * @return retorna uma String das comandas do certo periodo.
      */
-    public static String betweenn (LocalDate comeco, LocalDate fim) throws NullPointerException{
-        String resposta = "";
+    public String betweenn (LocalDate comeco, LocalDate fim){
+        String resposta = "|";
         for (Comanda comanda: comandas){
             if((comanda.getData().compareTo(comeco)>=0)&&(comanda.getData().compareTo(fim)<=0)){
                 resposta+=comanda;
