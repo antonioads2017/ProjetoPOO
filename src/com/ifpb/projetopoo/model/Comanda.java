@@ -19,7 +19,7 @@ public class Comanda implements Serializable {
 
     private List<Pedido> comanda;
     private int numeroMesa;
-    private static LocalDate data;
+    private LocalDate data;
     private static int cod;
     private static int numeroComanda;
 
@@ -59,12 +59,12 @@ public class Comanda implements Serializable {
         this.numeroMesa = numeroMesa;
     }
 
-    public static LocalDate getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public static void setData(LocalDate data) {
-        Comanda.data = data;
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
     public static int getNumeroComanda() {
