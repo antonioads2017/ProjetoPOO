@@ -21,7 +21,7 @@ public class Pedido implements Serializable {
     private float valorTotal;
     private boolean atendido;
     private Produto produto;
-    private static int id;
+    private static int contador;
     private int numeroPedido;
 
     /**
@@ -34,7 +34,7 @@ public class Pedido implements Serializable {
         this.data = LocalDate.now();
         this.hora = LocalTime.now();
         this.atendido = false;
-        numeroPedido= ++id;
+        numeroPedido= ++ contador;
 
     }
 
@@ -61,6 +61,14 @@ public class Pedido implements Serializable {
 
     public void setHora(LocalTime hora) {
         this.hora = hora;
+    }
+
+    public static void setContador(int contador) {
+        Pedido.contador = contador;
+    }
+
+    public static int getContador() {
+        return contador;
     }
 
     /**
@@ -94,8 +102,8 @@ public class Pedido implements Serializable {
         this.produto = produto;
     }
 
-    public int getId() {
-        return id;
+    public static int getId() {
+        return contador;
     }
 
     public int getNumeroPedido() {
@@ -103,7 +111,7 @@ public class Pedido implements Serializable {
     }
 
     public void setNumeroPedido(int numeroPedido) {
-        this.numeroPedido = numeroPedido;
+        this.numeroPedido = getContador();
     }
 
     /**
@@ -125,7 +133,7 @@ public class Pedido implements Serializable {
         }else atendimento="Não";
         return "Pedido "+numeroPedido+" = |Produto: "+produto+
                 "| Data e Hora:"+data+hora+"| Atendido: "+
-                atendimento+"| Valor Total: "+getValorTotal();
+                atendimento+"| Valor Total: "+getValorTotal()+"\n";
 
                 }
 }

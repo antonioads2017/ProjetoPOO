@@ -14,9 +14,9 @@ public class GerenciaDao {
 
     public GerenciaDao() throws IOException, ClassNotFoundException {
         arquivoGerencia = new File("Gerencia");
-        gerencia = new Gerencia();
         if(!arquivoGerencia.exists()){
             arquivoGerencia.createNewFile();
+            gerencia = new Gerencia();
         }else{
             if(arquivoGerencia.length()>0) {
                 try (ObjectInputStream in = new ObjectInputStream(

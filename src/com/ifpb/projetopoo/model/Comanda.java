@@ -20,22 +20,22 @@ public class Comanda implements Serializable {
     private List<Pedido> comanda;
     private int numeroMesa;
     private LocalDate data;
-    private static int cod;
-    private static int numeroComanda;
+    private static int contador;
+    private int numeroComanda;
 
     /**
      * Construtor
      * */
 
     public Comanda(int numeroMesa) {
-        numeroComanda=++cod;
+        numeroComanda=++contador;
         comanda=new ArrayList<>();
         this.numeroMesa = numeroMesa;
         data=LocalDate.now();
     }
 
-    public static int getCod() {
-        return cod;
+    public int getCod() {
+        return contador;
     }
 
     /**
@@ -67,12 +67,20 @@ public class Comanda implements Serializable {
         this.data = data;
     }
 
-    public static int getNumeroComanda() {
+    public int getNumeroComanda() {
         return numeroComanda;
     }
 
-    public static void setNumeroComanda(int numeroComanda) {
-        Comanda.numeroComanda = numeroComanda;
+    public void setNumeroComanda(int numeroComanda) {
+        this.numeroComanda = getContador();
+    }
+
+    public static int getContador() {
+        return contador;
+    }
+
+    public static void setContador(int contador) {
+        Comanda.contador = contador;
     }
 
     /**
@@ -105,7 +113,7 @@ public class Comanda implements Serializable {
      * @param pedido
      */
     public void addPedido(Pedido pedido){
-        comanda.add(pedido);;
+        comanda.add(pedido);
     }
 
     /**

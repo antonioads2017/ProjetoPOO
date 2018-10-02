@@ -49,7 +49,6 @@ public class Gerencia implements Serializable {
     public String betweenn (LocalDate comeco, LocalDate fim) throws DataInvalidaException {
         if(!comeco.isBefore(fim)) throw new DataInvalidaException("Data inicio maior que a data fim, tente de novo!");
         String resposta = "|";
-
         for (Comanda comanda: comandas){
             if((comanda.getData().compareTo(comeco)>=0)&&(comanda.getData().compareTo(fim)<=0)){
                 resposta+=comanda;

@@ -31,7 +31,7 @@ public class Cozinha {
 
     public Pedido getPedido(int idPedido) {
         for (Pedido pedido: pedidos){
-            if(pedido.getId()==idPedido){
+            if(pedido.getNumeroPedido()==idPedido){
                 return pedido;
             }
         }
