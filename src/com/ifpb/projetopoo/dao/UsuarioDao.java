@@ -74,8 +74,7 @@ public class UsuarioDao {
         return newUser;
     }
 
-    public boolean cadastrarUsuario() throws IOException, CPFInvalidoException {
-        Usuario usuario = lerDadosUsuario();
+    public boolean cadastrarUsuario(Usuario usuario) throws IOException, CPFInvalidoException {
         for (Usuario u: usuarios){
             if(Objects.equals(usuario.getCPF(),u.getCPF())){
                 throw new CPFInvalidoException("CPF já existe!");
@@ -113,8 +112,8 @@ public class UsuarioDao {
     }
 
     public boolean atualizarUsuario(String email, String senha) throws IOException, CPFInvalidoException {
-        usuarios.remove(consultarUsuario(email,senha));
-        return cadastrarUsuario();
+        return usuarios.remove(consultarUsuario(email,senha));
+
     }
 
     public boolean excluirUsuario(String emai, String senha){

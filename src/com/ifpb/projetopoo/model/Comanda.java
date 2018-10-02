@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.ifpb.projetopoo.dao.GerenciaDao;
 import com.ifpb.projetopoo.model.Pedido;
 
 /** A classe Comanda contêm a modelagem de comanda para o dominio.
