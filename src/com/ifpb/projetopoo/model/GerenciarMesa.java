@@ -161,7 +161,11 @@ public class GerenciarMesa {
         for (Comanda comanda: mesas){
             if(comanda.getNumeroMesa()==numeroMesa) {
                 if (comanda.Atendidos()) {
-                    gerencia.addGerencia(comanda);
+                    try {
+                        gerencia.addComanda(comanda);
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
                     index = mesas.indexOf(comanda);
                     System.out.println("Valor Total: " + comanda.getValorTotal());
                     break;

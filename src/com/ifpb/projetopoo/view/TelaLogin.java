@@ -1,6 +1,7 @@
 package com.ifpb.projetopoo.view;
 
 import com.ifpb.projetopoo.dao.UsuarioDao;
+import com.ifpb.projetopoo.model.Usuario;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -13,6 +14,7 @@ public class TelaLogin extends JFrame {
     private JButton CadastrarButton;
     private JFormattedTextField formattedTextField1;
     private JPasswordField passwordField1;
+    private JLabel imageLogin;
     private UsuarioDao usuarioDao;
 
     public TelaLogin() {
@@ -36,6 +38,36 @@ public class TelaLogin extends JFrame {
                 telaCadastro.setVisible(true);
             }
         });
+        LoginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String login = formattedTextField1.getText();
+                String senha = new String(passwordField1.getPassword());
+                Usuario usuario = null;
+                usuario = usuarioDao.consultarUsuario(login,senha);
+
+                if(usuario!=null){
+                    if(usuarioDao.autenticarUsuario(login,senha)){
+                        TelaPrincipal principal = new TelaPrincipal();
+                        principal.pack();
+                        dispose();
+                        principal.setVisible(true);
+                        System.exit(0);
+                    }else{
+                        JOptionPane.showMessageDialog(null,
+                                "Usuario ou senha invalidos",
+                                "Mensagem de erro",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null,
+                            "Usuário não cadastrado",
+                            "Mensagem de erro",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
     }
 
     public static void main(String[] args) {
@@ -45,6 +77,9 @@ public class TelaLogin extends JFrame {
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
+        imageLogin = new JLabel();
+
+        ImageIcon iconLogin = new ImageIcon("imagens/imagemLogin.png");
+        imageLogin.setIcon(iconLogin);
     }
 }

@@ -116,8 +116,12 @@ public class UsuarioDao {
 
     }
 
-    public boolean excluirUsuario(String emai, String senha){
-        return usuarios.remove(consultarUsuario(emai, senha));
+    public boolean excluirUsuario(String emai, String senha) throws IOException {
+        if(usuarios.remove(consultarUsuario(emai, senha))){
+            atualizarArquivo(usuarios);
+            return true;
+        }return false;
+
     }
 
 

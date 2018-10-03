@@ -7,6 +7,7 @@ import com.ifpb.projetopoo.model.Usuario;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -23,8 +24,9 @@ public class TelaCadastro extends JDialog {
     private JComboBox SetorcomboBox;
     private JFormattedTextField TelefoneTextField;
     private JPanel contentPanel;
-    private JButton limparButton;
+    private JButton cancelarButton;
     private JButton OKButton;
+    private JPanel botoesPanel;
     private UsuarioDao usuarios;
 
     public TelaCadastro(){
@@ -38,6 +40,7 @@ public class TelaCadastro extends JDialog {
         setContentPane(contentPanel);
         setTitle("Tela de Cadastro");
         setModal(true);
+        setSize(2000,2000);
         getRootPane().setDefaultButton(OKButton);
         OKButton.addActionListener(new ActionListener() {
             @Override
@@ -63,26 +66,29 @@ public class TelaCadastro extends JDialog {
                     JOptionPane.showMessageDialog(null, "Arquivo nao encontrado","ERRO",JOptionPane.ERROR_MESSAGE);
                 } catch (CPFInvalidoException e1) {
                     JOptionPane.showMessageDialog(null, "CPF INVÁLIDO","ERRO",JOptionPane.ERROR_MESSAGE);
+                    CPFTextField.setBackground(Color.red);
                 }
 
             }
         });
+
+        cancelarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
     }
 
-    private void createUIComponents() {
-        MaskFormatter formatter = null;
+    private void createUIComponents() throws ParseException {
 
-        try{
-            formatter = new MaskFormatter("##/##/####");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+        MaskFormatter formatter = new MaskFormatter("##/##/####");
         DataTextField = new JFormattedTextField();
+        formatter.install(DataTextField);
 
-        if(formatter!=null){
-            formatter.install(DataTextField);
-        }
+        MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
+        CPFTextField = new JFormattedTextField();
+        cpfFormatter.install(CPFTextField);
 
         SetorcomboBox = new JComboBox(Setor.values());
     }
