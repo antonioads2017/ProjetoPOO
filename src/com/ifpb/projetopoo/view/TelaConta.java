@@ -27,6 +27,7 @@ public class TelaConta extends JDialog {
     private JButton excluirButton;
     private JButton atualizarButton;
     private JButton buscarButton;
+    private JButton voltarButton;
     private UsuarioDao usuarioDao;
     private Usuario usuario;
     private String login;
@@ -99,6 +100,15 @@ public class TelaConta extends JDialog {
                     JOptionPane.showMessageDialog(null, "CPF INVÁLIDO","ERRO",JOptionPane.ERROR_MESSAGE);
                     cpfTextField.setBackground(Color.red);
                 }
+            }
+        });
+        voltarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TelaPrincipal telaPrincipal = new TelaPrincipal();
+                telaPrincipal.pack();
+                dispose();
+                telaPrincipal.setVisible(true);
             }
         });
     }

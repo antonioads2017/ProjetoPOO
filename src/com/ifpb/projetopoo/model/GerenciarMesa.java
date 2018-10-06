@@ -2,10 +2,13 @@ package com.ifpb.projetopoo.model;
 
 import com.ifpb.projetopoo.Exception.CodigoInvalidoException;
 import com.ifpb.projetopoo.dao.GerenciaDao;
+import org.omg.CORBA.Object;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 /** A classe GerenciarMesa contêm a modelagem de metodos para gerenciar
  * comandas e pedidos dos clientes.
  * A Classe contêm um ArrayList de Comanda.
@@ -21,7 +24,6 @@ public class GerenciarMesa {
 
 
     private List<Comanda> mesas;
-    private Cozinha cozinha;
 
     /**
      * Construtor
@@ -50,7 +52,7 @@ public class GerenciarMesa {
 
     public Comanda pegaComanda (int numeroMesa){
         for (Comanda comanda: mesas){
-            if(comanda.getNumeroMesa()==numeroMesa){
+            if(Objects.equals(comanda.getNumeroMesa(),numeroMesa)){
                 return comanda;
             }
         }return null;
@@ -141,10 +143,9 @@ public class GerenciarMesa {
      *
      * */
 
-     public boolean fazPedido(int numeroMesa, Pedido pedido){
-         cozinha = new Cozinha();
+     public boolean fazPedido(int numeroMesa, Pedido pedido,Cozinha cozinha){
         for(Comanda comanda:mesas){
-            if(comanda.getNumeroMesa()==numeroMesa){
+            if(Objects.equals(comanda.getNumeroMesa(),numeroMesa)){
                 comanda.addPedido(pedido);
                 cozinha.addPedido(pedido);
                 return true;

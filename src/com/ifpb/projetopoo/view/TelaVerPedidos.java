@@ -1,6 +1,8 @@
 package com.ifpb.projetopoo.view;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TelaVerPedidos extends JDialog{
     private JPanel contentPanel;
@@ -13,5 +15,14 @@ public class TelaVerPedidos extends JDialog{
         setContentPane(contentPanel);
         setTitle("Ver Pedidos");
         setModal(true);
+        OKButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GerenciaMesa gerenciaMesa = new GerenciaMesa();
+                gerenciaMesa.pack();
+                dispose();
+                gerenciaMesa.setVisible(true);
+            }
+        });
     }
 }

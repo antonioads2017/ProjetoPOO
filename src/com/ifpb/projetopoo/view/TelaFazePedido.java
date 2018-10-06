@@ -3,10 +3,7 @@ package com.ifpb.projetopoo.view;
 import com.ifpb.projetopoo.Exception.CodigoInvalidoException;
 import com.ifpb.projetopoo.Exception.PrecoInvalidoException;
 import com.ifpb.projetopoo.dao.ProdutoDao;
-import com.ifpb.projetopoo.model.Cozinha;
-import com.ifpb.projetopoo.model.GerenciarMesa;
-import com.ifpb.projetopoo.model.Pedido;
-import com.ifpb.projetopoo.model.Produto;
+import com.ifpb.projetopoo.model.*;
 
 import javax.swing.*;
 import javax.swing.text.DefaultFormatter;
@@ -53,15 +50,12 @@ public class TelaFazePedido extends JDialog{
         pedirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pedido = (new Pedido(((Produto) produtoscomboBox.getSelectedItem()),
-                        Integer.parseInt(quantidadeSpinner1.getValue().toString())));
-                System.out.println(pedido);
-                if(gerenciarMesa.fazPedido(GerenciaMesa.getMesa(),pedido)){
+                int numMesa = GerenciaMesa.getMesa();
+                if(addPedido()){
                         JOptionPane.showMessageDialog(null,"Pedido adicionado com sucesso");
                     }else{
                         JOptionPane.showMessageDialog(null,"Pedido nao adicionado","Erro",JOptionPane.ERROR_MESSAGE);
                     }
-                System.out.println(gerenciarMesa.pegaComanda(GerenciaMesa.getMesa()));
 
             }
         });
@@ -76,19 +70,11 @@ public class TelaFazePedido extends JDialog{
             }
         });
     }
-    private void listarProdutos() throws IOException, ClassNotFoundException {
-        Produto produtos[] = new Produto[produtoDao.pegarProdutos().size()];
-        int k = 0;
-        int selecao = 0;
-        for(Produto produto : produtoDao.pegarProdutos()){
-                produtos[k++] = produto;
-                if(pedido!=null){
-                    if(produto==pedido.getProduto()){
-                        selecao=k-1;
-                    }
-                }
+    private boolean addPedido(){
+        pedido = (new Pedido(((Produto) produtoscomboBox.getSelectedItem()),
+                Integer.parseInt(quantidadeSpinner1.getValue().toString())));
+        return gerenciarMesa.fazPedido(GerenciaMesa.getMesa(),pedido,cozinha);
 
-        }
     }
 
     private void createUIComponents() {

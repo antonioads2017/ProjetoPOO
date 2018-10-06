@@ -139,8 +139,9 @@ public class TelaProduto extends JDialog{
             public void actionPerformed(ActionEvent e) {
                     principal = new TelaPrincipal();
                     principal.pack();
-                    principal.setVisible(true);
                     dispose();
+                    principal.setVisible(true);
+
 
             }
         });

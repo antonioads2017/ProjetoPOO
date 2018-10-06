@@ -1,6 +1,8 @@
 package com.ifpb.projetopoo.view;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TelaGerencia extends JDialog {
     private JPanel contentPanel;
@@ -14,5 +16,14 @@ public class TelaGerencia extends JDialog {
         setContentPane(contentPanel);
         setTitle("Gerência");
         setModal(true);
+        voltarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TelaPrincipal telaPrincipal = new TelaPrincipal();
+                telaPrincipal.pack();
+                dispose();
+                telaPrincipal.setVisible(true);
+            }
+        });
     }
 }

@@ -1,6 +1,7 @@
 package com.ifpb.projetopoo.view;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,6 +19,8 @@ public class TelaPrincipal extends JDialog {
         setContentPane(contentPanel);
         setTitle("Tela Principal");
         setModal(true);
+        setResizable(false);
+        setBounds(0,0,1366,768);
         sairButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -58,6 +61,15 @@ public class TelaPrincipal extends JDialog {
                 telaProduto.pack();
                 dispose();
                 telaProduto.setVisible(true);
+            }
+        });
+        cozinhaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TelaCozinha telaCozinha = new TelaCozinha();
+                telaCozinha.pack();
+                dispose();
+                telaCozinha.setVisible(true);
             }
         });
     }
