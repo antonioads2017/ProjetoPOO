@@ -1,5 +1,6 @@
 package com.ifpb.projetopoo.model;
 
+import com.ifpb.projetopoo.Exception.CodigoInvalidoException;
 import com.ifpb.projetopoo.dao.GerenciaDao;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class GerenciarMesa {
 
 
     private List<Comanda> mesas;
+    private Cozinha cozinha;
 
     /**
      * Construtor
@@ -62,7 +64,10 @@ public class GerenciarMesa {
      * @return retorna null caso não encontre ou ja haja uma comanda aberta
      * */
 
-    public boolean abrirComanda(int numeroMesa){
+    public boolean abrirComanda(int numeroMesa) throws CodigoInvalidoException {
+        if(numeroMesa<=0){
+            throw new CodigoInvalidoException("Numero de mesa invalida");
+        }
         boolean temComanda = false;
         for(Comanda comanda: mesas){
             if(comanda.getNumeroMesa() == numeroMesa){
@@ -136,13 +141,14 @@ public class GerenciarMesa {
      *
      * */
 
-     public boolean fazPedido(int numeroMesa, Pedido pedido, Cozinha cozinha){
+     public boolean fazPedido(int numeroMesa, Pedido pedido){
+         cozinha = new Cozinha();
         for(Comanda comanda:mesas){
             if(comanda.getNumeroMesa()==numeroMesa){
                 comanda.addPedido(pedido);
                 cozinha.addPedido(pedido);
                 return true;
-            }
+            }break;
         }return false;
      }
 

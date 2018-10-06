@@ -33,6 +33,33 @@ public class TelaPrincipal extends JDialog {
                 telaConta.setVisible(true);
             }
         });
+        gerenciaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TelaGerencia telaGerencia = new TelaGerencia();
+                telaGerencia.pack();
+                dispose();
+                telaGerencia.setVisible(true);
+            }
+        });
+        mesasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GerenciaMesa gerenciaMesa = new GerenciaMesa();
+                gerenciaMesa.pack();
+                dispose();
+                gerenciaMesa.setVisible(true);
+            }
+        });
+        menuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TelaProduto telaProduto = new TelaProduto();
+                telaProduto.pack();
+                dispose();
+                telaProduto.setVisible(true);
+            }
+        });
     }
 
     private void createUIComponents() {

@@ -1,5 +1,6 @@
 package com.ifpb.projetopoo.model;
 
+import com.ifpb.projetopoo.Exception.CodigoInvalidoException;
 import com.ifpb.projetopoo.Exception.PrecoInvalidoException;
 
 import java.io.*;
@@ -20,10 +21,16 @@ public class Produto implements Serializable {
     /**CONSTRUTOR
      */
 
-    public Produto(int codigo,String nome, String descrição, float precoUnico){
+    public Produto(int codigo,String nome, String descrição, float precoUnico) throws CodigoInvalidoException, PrecoInvalidoException {
         this.nome = nome;
         this.descrição = descrição;
+        if(precoUnico<=0){
+            throw  new PrecoInvalidoException("O valor esta incorreto");
+        }
         this.precoUnico = precoUnico;
+        if(codigo<=0){
+            throw new CodigoInvalidoException("O código informado é inválido!");
+        }
         this.codigo=codigo;
     }
 
@@ -80,6 +87,6 @@ public class Produto implements Serializable {
 
     @Override
     public String toString() {
-        return "Produto = Codigo: "+codigo+" Nome: "+nome+"| Descrição: "+descrição+"| Preço: "+precoUnico+"\n";
+        return "Codigo: "+codigo+" Nome: "+nome+"| Descrição: "+descrição+"| Preço: "+precoUnico+"\n";
     }
 }
