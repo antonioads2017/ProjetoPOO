@@ -14,7 +14,7 @@ public class TelaVerPedidos extends JDialog{
     private JTextField totaltextField1;
     private JButton OKButton;
     private JButton editarButton;
-
+    private static int numMesa=0;
 
     public TelaVerPedidos(){
         setContentPane(contentPanel);
@@ -46,6 +46,13 @@ public class TelaVerPedidos extends JDialog{
         });
     }
 
+    public static void setNumMesa(int mesa){
+        numMesa = mesa;
+    }
+
+    public static int getNumMesa(){
+        return GerenciaMesa.getMesa();
+    }
 
     private void updatePedidos(){
         DefaultListModel<String> listModel = new DefaultListModel<>();

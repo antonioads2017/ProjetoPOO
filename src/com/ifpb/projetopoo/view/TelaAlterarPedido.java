@@ -2,6 +2,7 @@ package com.ifpb.projetopoo.view;
 
 import com.ifpb.projetopoo.dao.ProdutoDao;
 import com.ifpb.projetopoo.model.GerenciarMesa;
+import com.ifpb.projetopoo.model.Pedido;
 import com.ifpb.projetopoo.model.Produto;
 
 import javax.swing.*;
@@ -40,6 +41,30 @@ public class TelaAlterarPedido extends JDialog{
                             JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                 }
+            }
+        });
+        modificarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    Pedido novo = new Pedido(ProdutoDao.ConsultaProduto(Integer.parseInt
+                            (listProdutos.getSelectedValue().toString().split("-")[0])),(int) quantidadeSpinner1.getValue());
+                    if(novo.equals(GerenciarMesa.pegaComanda(TelaVerPedidos.getNumMesa()).getPedido(id))){
+                        JOptionPane.showMessageDialog(null, "Não houve nenhuma alteração no pedido!",
+                                "Mensagem de Confirmação",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    }else{
+                        if(GerenciarMesa.editarPedido(id,TelaVerPedidos.getNumMesa(),novo)){
+                            JOptionPane.showMessageDialog(null, "Pedido alterado com sucesso!",
+                                    "Mensagem de Confirmação",
+                                    JOptionPane.INFORMATION_MESSAGE);
+                            dispose();
+                        }
+                    }
+                } catch (ClassNotFoundException | IOException e1) {
+                    JOptionPane.showMessageDialog(null, "Arquivo nao encontrado","ERRO",JOptionPane.ERROR_MESSAGE);
+                }
+
             }
         });
     }

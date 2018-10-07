@@ -31,14 +31,18 @@ public class TelaFazePedido extends JDialog{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String pedido = (String) listProdutos.getSelectedValue();
-
-                Pedido p = new Pedido(ProdutoDao.ConsultaProduto(Integer.parseInt(pedido.split("-")[0])), (int) quantidadeSpinner1.getValue());
-                System.out.println(p);
-                if (GerenciarMesa.fazPedido(numMesa, p)) {
-                    JOptionPane.showMessageDialog(null, "Pedido efetuado com sucesso", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Pedido não efetuado", "Erro", JOptionPane.ERROR_MESSAGE);
+                try{
+                    Pedido p = new Pedido(ProdutoDao.ConsultaProduto(Integer.parseInt(pedido.split("-")[0])), (int) quantidadeSpinner1.getValue());
+                    System.out.println(p);
+                    if (GerenciarMesa.fazPedido(numMesa, p)) {
+                        JOptionPane.showMessageDialog(null, "Pedido efetuado com sucesso", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Pedido não efetuado", "Erro", JOptionPane.ERROR_MESSAGE);
+                    }
+                }catch (ClassNotFoundException | IOException e1) {
+                    JOptionPane.showMessageDialog(null, "Arquivo nao encontrado","ERRO",JOptionPane.ERROR_MESSAGE);
                 }
+
 
             }
         });

@@ -3,17 +3,29 @@
   <component name="ChangeListManager">
     <list default="true" id="18d232de-ca2c-4899-b45c-72d064496b1e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Produto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/dao/ProdutoDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/dao/ProdutoDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Comanda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Comanda.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Cozinha.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/Cozinha.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/GerenciarMesa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/model/GerenciarMesa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/GerenciaMesa$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/GerenciaMesa$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/GerenciaMesa$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/GerenciaMesa$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaAlterarPedido$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaAlterarPedido$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaAlterarPedido.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaAlterarPedido.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaFazePedido$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaFazePedido$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaFazePedido$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaFazePedido$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaFazePedido.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaFazePedido.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaProduto$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaProduto$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaProduto$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaProduto$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaProduto$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaProduto$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaProduto$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaProduto$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaProduto$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaProduto$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaProduto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaProduto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaVerPedidos$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaVerPedidos$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaVerPedidos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Projeto/com/ifpb/projetopoo/view/TelaVerPedidos.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/ProdutoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/ProdutoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Comanda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Comanda.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Cozinha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Cozinha.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/GerenciarMesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/GerenciarMesa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaAlterarPedido.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaAlterarPedido.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaAlterarPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaAlterarPedido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaFazePedido.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaFazePedido.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaFazePedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaFazePedido.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaProduto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaProduto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaVerPedidos.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaVerPedidos.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaVerPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaVerPedidos.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -47,7 +59,7 @@
     <session id="1196817471">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="16" />
+          <entry key="project.closed" value="17" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="4" />
           <entry key="project.open.time.13" value="1" />
@@ -61,55 +73,43 @@
           <entry key="project.open.time.48" value="1" />
           <entry key="project.open.time.65" value="1" />
           <entry key="project.open.time.68" value="1" />
-          <entry key="project.open.time.72" value="1" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.open.time.72" value="2" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="12336" />
+          <entry key="java" value="13011" />
+          <entry key="txt" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="12336" />
+          <entry key="JAVA" value="13011" />
+          <entry key="PLAIN_TEXT" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="form" value="30" />
-          <entry key="java" value="128" />
+          <entry key="form" value="32" />
+          <entry key="java" value="140" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="GUI_DESIGNER_FORM" value="30" />
-          <entry key="JAVA" value="128" />
+          <entry key="GUI_DESIGNER_FORM" value="32" />
+          <entry key="JAVA" value="140" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaAlterarPedido.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="40" column="30" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1264#1265#0" expanded="true" />
-                <element signature="e#1284#1285#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/model/GerenciarMesa.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="213" column="32" lean-forward="true" selection-start-line="213" selection-start-column="32" selection-end-line="213" selection-end-column="32" />
+            <state relative-caret-position="229">
+              <caret line="64" column="27" lean-forward="true" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,25 +118,48 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Comanda.java">
+        <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaGerencia.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="151" column="5" selection-start-line="151" selection-start-column="5" selection-end-line="151" selection-end-column="5" />
+            <state relative-caret-position="330">
+              <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/GerenciaMesa.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="88" column="84" selection-start-line="88" selection-start-column="84" selection-end-line="88" selection-end-column="84" />
               <folding>
-                <element signature="e#1779#1780#0" expanded="true" />
-                <element signature="e#1822#1823#0" expanded="true" />
-                <element signature="e#3388#3389#0" expanded="true" />
-                <element signature="e#3423#3424#0" expanded="true" />
-                <element signature="e#3470#3471#0" expanded="true" />
-                <element signature="e#3508#3509#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaProduto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="74" column="68" selection-start-line="74" selection-start-column="68" selection-end-line="74" selection-end-column="68" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaAlterarPedido.form">
-          <provider selected="true" editor-type-id="ui-designer" />
+        <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaFazePedido.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-163">
+              <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -183,15 +206,15 @@
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaCozinha.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Cozinha.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaFazePedido.form" />
-        <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaProduto.java" />
-        <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/ProdutoDao.java" />
-        <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaFazePedido.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaAlterarPedido.form" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaVerPedidos.form" />
-        <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaVerPedidos.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Comanda.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/model/GerenciarMesa.java" />
+        <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaVerPedidos.java" />
+        <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/ProdutoDao.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaAlterarPedido.java" />
+        <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaFazePedido.java" />
+        <option value="$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaProduto.java" />
       </list>
     </option>
   </component>
@@ -266,15 +289,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="projetopoo" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="TelaAlterarPedido" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="Projeto" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Projeto" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="projetopoo" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="TelaVerPedidos" type="e9f4de52:FormNode" />
+              <item name="TelaFazePedido" type="e9f4de52:FormNode" />
             </path>
           </expand>
           <select />
@@ -289,7 +304,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.STATE" value="ToolWindow" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538922363872" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538930264001" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
@@ -381,8 +396,17 @@
       <workItem from="1538755127870" duration="14852000" />
       <workItem from="1538784042167" duration="3468000" />
       <workItem from="1538830326641" duration="10550000" />
-      <workItem from="1538916335893" duration="6022000" />
+      <workItem from="1538916335893" duration="9519000" />
+      <workItem from="1538937909116" duration="2301000" />
     </task>
+    <task id="LOCAL-00001" summary="&quot;Mais interface :|&quot;">
+      <created>1538922409368</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1538922409368</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -394,7 +418,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76621000" />
+    <option name="totallyTimeSpent" value="82419000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -409,7 +433,7 @@
     <frame x="0" y="-1" width="1366" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45531198" visible="true" weight="0.17045455" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.45531198" visible="true" weight="0.17272727" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -418,7 +442,7 @@
       <window_info x="253" y="101" width="470" height="456" id="UI Designer" order="6" sideWeight="0.54468805" weight="0.16969697" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.23376623" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23376623" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39935064" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -445,6 +469,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;Mais interface :|&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Mais interface :|&quot;" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Setor.java">
@@ -514,9 +542,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
           <caret line="31" column="64" lean-forward="true" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -541,38 +566,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaProduto.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/GerenciaDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="45" column="11" lean-forward="true" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/GerenciaMesa.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/GerenciaMesa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="88" column="84" selection-start-line="88" selection-start-column="84" selection-end-line="88" selection-end-column="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaGerencia.form">
       <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaGerencia.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaConta.form">
       <provider selected="true" editor-type-id="ui-designer" />
@@ -581,9 +576,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
           <caret line="110" column="45" selection-start-line="110" selection-start-column="45" selection-end-line="110" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -594,9 +586,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -607,44 +596,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
-          <folding>
-            <element signature="e#912#913#0" expanded="true" />
-            <element signature="e#953#954#0" expanded="true" />
-            <element signature="e#1084#1085#0" expanded="true" />
-            <element signature="e#1119#1120#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Pedido.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaFazePedido.form">
       <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/ProdutoDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="71" column="42" selection-start-line="71" selection-start-column="42" selection-end-line="71" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaProduto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-798">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaPrincipal.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -656,25 +612,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaFazePedido.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaVerPedidos.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Comanda.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="78" column="42" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
+        <state relative-caret-position="296">
+          <caret line="151" column="5" selection-start-line="151" selection-start-column="5" selection-end-line="151" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/model/GerenciarMesa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="971">
+          <caret line="213" column="32" lean-forward="true" selection-start-line="213" selection-start-column="32" selection-end-line="213" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/GerenciaMesa.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Pedido.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="89" column="24" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1892#1893#0" expanded="true" />
+            <element signature="e#1923#1924#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaVerPedidos.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaVerPedidos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+        <state relative-caret-position="660">
+          <caret line="53" column="37" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1793#1794#0" expanded="true" />
+            <element signature="e#1823#1824#0" expanded="true" />
+            <element signature="e#1860#1861#0" expanded="true" />
+            <element signature="e#1905#1906#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -682,39 +660,72 @@
     <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaAlterarPedido.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/model/Comanda.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/GerenciaDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="151" column="5" selection-start-line="151" selection-start-column="5" selection-end-line="151" selection-end-column="5" />
+        <state relative-caret-position="465">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
           <folding>
-            <element signature="e#1779#1780#0" expanded="true" />
-            <element signature="e#1822#1823#0" expanded="true" />
-            <element signature="e#3388#3389#0" expanded="true" />
-            <element signature="e#3423#3424#0" expanded="true" />
-            <element signature="e#3470#3471#0" expanded="true" />
-            <element signature="e#3508#3509#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/model/GerenciarMesa.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaGerencia.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="213" column="32" lean-forward="true" selection-start-line="213" selection-start-column="32" selection-end-line="213" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="330">
+          <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaAlterarPedido.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="40" column="30" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
+        <state relative-caret-position="229">
+          <caret line="64" column="27" lean-forward="true" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1264#1265#0" expanded="true" />
-            <element signature="e#1284#1285#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaProduto.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/GerenciaMesa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="88" column="84" selection-start-line="88" selection-start-column="84" selection-end-line="88" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/dao/ProdutoDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="52" column="25" lean-forward="true" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaFazePedido.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-163">
+          <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/projetopoo/view/TelaProduto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="74" column="68" selection-start-line="74" selection-start-column="68" selection-end-line="74" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

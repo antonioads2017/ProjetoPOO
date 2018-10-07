@@ -8,34 +8,25 @@ import java.util.*;
 
 public class ProdutoDao {
 
-    private static File arquivoProduto;
-    private static Set<Produto> produtos;
+    private static File arquivoProduto = new File("Produto");
 
-    public ProdutoDao() throws IOException, ClassNotFoundException {
-        arquivoProduto = new File("Produto");
-        if(!arquivoProduto.exists()){
+
+
+    public static Set<Produto> pegarProdutos() throws IOException, ClassNotFoundException {
+        Set<Produto> produtos = new HashSet<>();
+        if (!arquivoProduto.exists()) {
             arquivoProduto.createNewFile();
-        }
-        else{
-            if(arquivoProduto.length()>0) {
-                try (ObjectInputStream in = new ObjectInputStream(
-                        new FileInputStream(arquivoProduto))) {
+        } else {
+            if (arquivoProduto.length() > 0) {
+                try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(arquivoProduto))) {
                     produtos = (Set<Produto>) in.readObject();
                 }
-            }else produtos = new HashSet<>();
-        }
-    }
-    public static Set<Produto> pegarProdutos() throws IOException, ClassNotFoundException {
-        if(arquivoProduto.length()>0) {
-            try (ObjectInputStream in = new ObjectInputStream(
-                    new FileInputStream(arquivoProduto))) {
-                return  (Set<Produto>) in.readObject();
             }
-        }else return new HashSet<>();
+        }return new HashSet<>();
     }
 
-
-    public static boolean AddProduto(Produto produto) throws IOException{
+    public static boolean AddProduto(Produto produto) throws IOException, ClassNotFoundException {
+        Set<Produto> produtos = pegarProdutos();
         for(Produto produto1:produtos){
             if(Objects.equals(produto.getCodigo(),produto1.getCodigo())){
                 return false;
@@ -49,7 +40,8 @@ public class ProdutoDao {
         }
     }
 
-    public static Produto ConsultaProduto(int codigo){
+    public static Produto ConsultaProduto(int codigo) throws IOException, ClassNotFoundException {
+        Set<Produto> produtos = pegarProdutos();
         for(Produto produto: produtos){
             if(produto.getCodigo()==codigo){
                 return produto;
@@ -57,7 +49,8 @@ public class ProdutoDao {
         }return null;
     }
 
-    public static boolean deletarProduto(int codigo) throws IOException{
+    public static boolean deletarProduto(int codigo) throws IOException, ClassNotFoundException {
+        Set<Produto> produtos = pegarProdutos();
         for(Produto produto: produtos){
             if(produto.getCodigo()==codigo){
                 if(produtos.remove(produto)) {
@@ -67,7 +60,8 @@ public class ProdutoDao {
             }
         }return false;
     }
-    public static boolean atualizarProduto(int codigo) throws IOException{
+    public static boolean atualizarProduto(int codigo) throws IOException, ClassNotFoundException {
+        Set<Produto> produtos = pegarProdutos();
         for (Produto produto : produtos){
             if(produto.getCodigo()==codigo){
                 deletarProduto(codigo);
@@ -86,7 +80,14 @@ public class ProdutoDao {
 
     @Override
     public String toString() {
-
+        Set<Produto> produtos = null;
+        try {
+            produtos = pegarProdutos();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         String s = "|---------PRODUTOS---------| \n";
         if(produtos.isEmpty()){
             return "Menu Vazio";
