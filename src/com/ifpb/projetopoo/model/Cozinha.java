@@ -16,11 +16,7 @@ public class Cozinha {
 
 
 
-    private List<Pedido> pedidos;
-
-    public Cozinha() {
-        pedidos=new ArrayList<>();
-    }
+    private static List<Pedido> pedidos = new ArrayList<>();
 
     /**
      * Retorna um pedido pela id recebida como propriedade
@@ -29,7 +25,7 @@ public class Cozinha {
      * @return null se não encontrar
      * */
 
-    public Pedido getPedido(int idPedido) {
+    public static Pedido getPedido(int idPedido) {
         for (Pedido pedido: pedidos){
             if(pedido.getNumeroPedido()==idPedido){
                 return pedido;
@@ -38,15 +34,15 @@ public class Cozinha {
         return null;
     }
 
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
+    public static void setPedidos(List<Pedido> pedidos) {
+        Cozinha.pedidos = pedidos;
     }
 
-    public List<Pedido> getPedidos() {
+    public static List<Pedido> getPedidos() {
         return pedidos;
     }
 
-    public void addPedido (Pedido pedido){
+    public static void addPedido (Pedido pedido){
         pedidos.add(pedido);
     }
 
@@ -59,7 +55,7 @@ public class Cozinha {
      * @return false se o pedido ja estiver marcado como atendido
      * */
 
-    public boolean atenderPedido(int idPedido){
+    public static boolean atenderPedido(int idPedido){
         if(getPedido(idPedido)==null){
             return false;
         }if(!getPedido(idPedido).isAtendido()){

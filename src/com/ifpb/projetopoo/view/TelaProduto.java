@@ -4,14 +4,12 @@ import com.ifpb.projetopoo.Exception.CodigoInvalidoException;
 import com.ifpb.projetopoo.Exception.PrecoInvalidoException;
 import com.ifpb.projetopoo.dao.ProdutoDao;
 import com.ifpb.projetopoo.model.Produto;
-import com.ifpb.projetopoo.view.FloatField;
 
 import javax.swing.*;
 import javax.swing.text.DefaultFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowListener;
 import java.io.IOException;
 
 
@@ -26,7 +24,6 @@ public class TelaProduto extends JDialog{
     private JButton adicionarButton;
     private JButton atualizarButton;
     private JButton sairButton;
-    private ProdutoDao produtoDao;
     private int codigo;
     private Produto produto;
     private TelaPrincipal principal;
@@ -36,13 +33,7 @@ public class TelaProduto extends JDialog{
         setTitle("Gerencia de Produtos");
         setModal(true);
 
-        try {
-            produtoDao = new ProdutoDao();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
         adicionarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -59,7 +50,7 @@ public class TelaProduto extends JDialog{
                     e1.printStackTrace();
                 }
                 try{
-                    if(produtoDao.AddProduto(produto)){
+                    if(ProdutoDao.AddProduto(produto)){
                         JOptionPane.showMessageDialog(null,"Produto inserido com sucesso");
                         limpar();
                     }else{
@@ -77,17 +68,16 @@ public class TelaProduto extends JDialog{
             @Override
             public void actionPerformed(ActionEvent e) {
                 codigo = Integer.parseInt(codigoSpinner.getValue().toString());
-                produto = produtoDao.ConsultaProduto(codigo);
-                if(produtoDao.ConsultaProduto(codigo)==null){
+                if(ProdutoDao.ConsultaProduto(codigo)==null){
                     nomeTextField.setText("");
                     descricaoTextField.setText("");
                     precoTextField.setText("0,00");
                     JOptionPane.showMessageDialog(null, "Produto com codigo "+codigo+" não existe!","ERRO",JOptionPane.ERROR_MESSAGE);
                 }
                 else{
-                    nomeTextField.setText(produto.getNome());
-                    descricaoTextField.setText(produto.getDescrição());
-                    precoTextField.setText(String.valueOf(produto.getPrecoUnico()).replace('.', ','));
+                    nomeTextField.setText(ProdutoDao.ConsultaProduto(codigo).getNome());
+                    descricaoTextField.setText(ProdutoDao.ConsultaProduto(codigo).getDescrição());
+                    precoTextField.setText(String.valueOf(ProdutoDao.ConsultaProduto(codigo).getPrecoUnico()).replace('.', ','));
                 }
             }
         });
@@ -96,7 +86,7 @@ public class TelaProduto extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 codigo = Integer.parseInt(codigoSpinner.getValue().toString());
                 try {
-                    if(produtoDao.deletarProduto(codigo)){
+                    if(ProdutoDao.deletarProduto(codigo)){
                         JOptionPane.showMessageDialog(null,"Produto excluido com sucesso");
                         limpar();
                     }
@@ -110,7 +100,7 @@ public class TelaProduto extends JDialog{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    produtoDao.deletarProduto(codigo);
+                    ProdutoDao.deletarProduto(codigo);
                 } catch (IOException e1) {
                     JOptionPane.showMessageDialog(null, "Arquivo nao encontrado","ERRO",JOptionPane.ERROR_MESSAGE);
                 }
@@ -125,7 +115,7 @@ public class TelaProduto extends JDialog{
                     e1.printStackTrace();
                 }
                 try{
-                    if(produtoDao.AddProduto(produto)){
+                    if(ProdutoDao.AddProduto(produto)){
                         JOptionPane.showMessageDialog(null,"Produto atualizado com sucesso");
                         limpar();
                     }

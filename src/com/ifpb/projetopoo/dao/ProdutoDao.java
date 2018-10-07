@@ -8,8 +8,8 @@ import java.util.*;
 
 public class ProdutoDao {
 
-    private File arquivoProduto;
-    private Set<Produto> produtos;
+    private static File arquivoProduto;
+    private static Set<Produto> produtos;
 
     public ProdutoDao() throws IOException, ClassNotFoundException {
         arquivoProduto = new File("Produto");
@@ -25,7 +25,7 @@ public class ProdutoDao {
             }else produtos = new HashSet<>();
         }
     }
-    public Set<Produto> pegarProdutos() throws IOException, ClassNotFoundException {
+    public static Set<Produto> pegarProdutos() throws IOException, ClassNotFoundException {
         if(arquivoProduto.length()>0) {
             try (ObjectInputStream in = new ObjectInputStream(
                     new FileInputStream(arquivoProduto))) {
@@ -35,7 +35,7 @@ public class ProdutoDao {
     }
 
 
-    public boolean AddProduto(Produto produto) throws IOException{
+    public static boolean AddProduto(Produto produto) throws IOException{
         for(Produto produto1:produtos){
             if(Objects.equals(produto.getCodigo(),produto1.getCodigo())){
                 return false;
@@ -49,17 +49,17 @@ public class ProdutoDao {
         }
     }
 
-    public Produto ConsultaProduto(int codigo){
+    public static Produto ConsultaProduto(int codigo){
         for(Produto produto: produtos){
-            if(Objects.equals(codigo,produto.getCodigo())){
+            if(produto.getCodigo()==codigo){
                 return produto;
             }
         }return null;
     }
 
-    public boolean deletarProduto(int codigo) throws IOException{
+    public static boolean deletarProduto(int codigo) throws IOException{
         for(Produto produto: produtos){
-            if(Objects.equals(codigo,produto.getCodigo())){
+            if(produto.getCodigo()==codigo){
                 if(produtos.remove(produto)) {
                     atualizarArquivo(produtos);
                     return true;
@@ -67,16 +67,16 @@ public class ProdutoDao {
             }
         }return false;
     }
-    public boolean atualizarProduto(int codigo) throws IOException{
+    public static boolean atualizarProduto(int codigo) throws IOException{
         for (Produto produto : produtos){
-            if(Objects.equals(codigo,produto.getCodigo())){
+            if(produto.getCodigo()==codigo){
                 deletarProduto(codigo);
                 return true;
             }
         }return false;
     }
 
-    private void atualizarArquivo(Set<Produto> produtos) throws IOException {
+    private static void atualizarArquivo(Set<Produto> produtos) throws IOException {
         try(ObjectOutputStream out = new ObjectOutputStream(
                 new FileOutputStream(arquivoProduto))){
             out.writeObject(produtos);

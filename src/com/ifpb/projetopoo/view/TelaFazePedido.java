@@ -1,7 +1,6 @@
 package com.ifpb.projetopoo.view;
 
-import com.ifpb.projetopoo.Exception.CodigoInvalidoException;
-import com.ifpb.projetopoo.Exception.PrecoInvalidoException;
+
 import com.ifpb.projetopoo.dao.ProdutoDao;
 import com.ifpb.projetopoo.model.*;
 
@@ -10,52 +9,36 @@ import javax.swing.text.DefaultFormatter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.Vector;
+
 
 public class TelaFazePedido extends JDialog{
     private JPanel contentPanel;
     private JSpinner quantidadeSpinner1;
     private JButton pedirButton;
-    private JComboBox produtoscomboBox;
     private JButton voltarButton;
-    private ProdutoDao produtos;
-    private GerenciarMesa gerenciarMesa;
-    private Cozinha cozinha;
-    private ProdutoDao produtoDao;
+    private JList listProdutos;
+    private static int numMesa = 0;
+
     private Pedido pedido;
 
     public TelaFazePedido(){
-        cozinha = new Cozinha();
         setContentPane(contentPanel);
         setTitle("Fazer Pedidos");
         setModal(true);
-        gerenciarMesa = new GerenciarMesa();
-        try {
-            produtos = new ProdutoDao();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            for (Produto p : produtos.pegarProdutos()) {
-                produtoscomboBox.addItem(p);
-            }
-        }catch( ClassNotFoundException | IOException ex){
-            JOptionPane.showMessageDialog(null,"Erro na listagem dos produtos","Erro",JOptionPane.ERROR_MESSAGE);
-        }
 
 
         pedirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int numMesa = GerenciaMesa.getMesa();
-                if(addPedido()){
-                        JOptionPane.showMessageDialog(null,"Pedido adicionado com sucesso");
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Pedido nao adicionado","Erro",JOptionPane.ERROR_MESSAGE);
-                    }
+                String pedido = (String) listProdutos.getSelectedValue();
+
+                Pedido p = new Pedido(ProdutoDao.ConsultaProduto(Integer.parseInt(pedido.split("-")[0])), (int) quantidadeSpinner1.getValue());
+                System.out.println(p);
+                if (GerenciarMesa.fazPedido(numMesa, p)) {
+                    JOptionPane.showMessageDialog(null, "Pedido efetuado com sucesso", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Pedido não efetuado", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
 
             }
         });
@@ -70,14 +53,25 @@ public class TelaFazePedido extends JDialog{
             }
         });
     }
-    private boolean addPedido(){
-        pedido = (new Pedido(((Produto) produtoscomboBox.getSelectedItem()),
-                Integer.parseInt(quantidadeSpinner1.getValue().toString())));
-        return gerenciarMesa.fazPedido(GerenciaMesa.getMesa(),pedido,cozinha);
 
+    public static void setNumMesa(int mesa) {
+        numMesa = mesa;
     }
 
     private void createUIComponents() {
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        try{
+            for(Produto p: ProdutoDao.pegarProdutos()){
+                listModel.addElement(p.getCodigo()+"-"+p.getNome());
+            }
+        }catch (ClassNotFoundException | IOException ex){
+            JOptionPane.showMessageDialog(null, "Falha na conexão com o arquivo", "Mensagem de Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        listProdutos = new JList();
+        listProdutos.setModel(listModel);
+        listProdutos.setSelectedIndex(0);
+        listProdutos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         quantidadeSpinner1 = new JSpinner();
         quantidadeSpinner1.setModel(new SpinnerNumberModel(1,1,null,1));
         JSpinner.NumberEditor jsEditor = (JSpinner.NumberEditor)quantidadeSpinner1.getEditor();

@@ -133,16 +133,22 @@ public class Comanda implements Serializable {
         }return check;
     }
 
-    public String pedidosNaoAtendidos (){
-        String s = "";
-        for (Pedido pedido: comanda){
+    public List<Pedido> pedidosNaoAtendidos (){
+        List<Pedido> pedidoList = new ArrayList<>();
+        for(Pedido pedido:comanda){
             if(!pedido.isAtendido()){
-                s+=pedido.toString();
+                pedidoList.add(pedido);
             }
-        }
-        if(s.equals("")){
-            System.out.println("Todos os pedidos foram atendidos!");
-        }return s;
+        }if(pedidoList.isEmpty()){
+            return null;
+        }return pedidoList;
+    }
+    public void adicionarPedido(Pedido pedido){
+        comanda.add(pedido);
+    }
+
+    public void removerPedido(Pedido pedido){
+        comanda.remove(pedido);
     }
 
 
