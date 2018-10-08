@@ -1,5 +1,8 @@
 package com.ifpb.projetopoo.model;
 
+import com.ifpb.projetopoo.Exception.DataInvalidaException;
+import com.ifpb.projetopoo.dao.UsuarioDao;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -28,7 +31,10 @@ public class Usuario implements Serializable {
      * Construtor
      * */
 
-    public Usuario(String email, String senha, String CPF, String nome, LocalDate dataNascimento, Setor setor, String telefone) {
+    public Usuario(String email, String senha, String CPF, String nome, LocalDate dataNascimento, Setor setor, String telefone) throws DataInvalidaException {
+        if(dataNascimento==LocalDate.now()){
+            throw  new DataInvalidaException("Data Invalida");
+        }
         this.email = email;
         this.senha = senha;
         this.CPF=CPF;
@@ -71,7 +77,10 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
-    public LocalDate getDataNascimento() {
+    public LocalDate getDataNascimento() throws DataInvalidaException {
+        if(dataNascimento==LocalDate.now()){
+            throw  new DataInvalidaException("Data Invalida");
+        }
         return dataNascimento;
     }
 
@@ -139,11 +148,12 @@ public class Usuario implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
         return Objects.equals(email, usuario.email) &&
-                Objects.equals(senha, usuario.senha);
+                Objects.equals(senha, usuario.senha) &&
+                Objects.equals(CPF, usuario.CPF);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, senha);
+        return Objects.hash(email, senha, CPF);
     }
 }

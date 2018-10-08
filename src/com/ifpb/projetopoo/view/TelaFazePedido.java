@@ -1,6 +1,7 @@
 package com.ifpb.projetopoo.view;
 
 
+import com.ifpb.projetopoo.Exception.CodigoInvalidoException;
 import com.ifpb.projetopoo.dao.ProdutoDao;
 import com.ifpb.projetopoo.model.*;
 
@@ -25,24 +26,27 @@ public class TelaFazePedido extends JDialog{
         setContentPane(contentPanel);
         setTitle("Fazer Pedidos");
         setModal(true);
+        setLocationRelativeTo(null);
 
 
         pedirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String pedido = (String) listProdutos.getSelectedValue();
-                try{
-                    Pedido p = new Pedido(ProdutoDao.ConsultaProduto(Integer.parseInt(pedido.split("-")[0])), (int) quantidadeSpinner1.getValue());
-                    System.out.println(p);
-                    if (GerenciarMesa.fazPedido(numMesa, p)) {
-                        JOptionPane.showMessageDialog(null, "Pedido efetuado com sucesso", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Pedido não efetuado", "Erro", JOptionPane.ERROR_MESSAGE);
+                String pedido = (String)listProdutos.getSelectedValue();
+                try {
+                    Pedido pd = new Pedido(ProdutoDao.ConsultaProduto(Integer.parseInt(pedido.split("-")[0])),(int)quantidadeSpinner1.getValue());
+                    if(GerenciarMesa.fazPedido(numMesa,pd)){
+                        JOptionPane.showMessageDialog(null,"Pedido efetuado");
+                    }else {
+                        JOptionPane.showMessageDialog(null,"Pedido não foi efetuado","Erro",JOptionPane.ERROR_MESSAGE);
                     }
-                }catch (ClassNotFoundException | IOException e1) {
-                    JOptionPane.showMessageDialog(null, "Arquivo nao encontrado","ERRO",JOptionPane.ERROR_MESSAGE);
+                }catch (CodigoInvalidoException e1){
+                    JOptionPane.showMessageDialog(null,"Quantidade tem ser um valor positivo","Erro",JOptionPane.ERROR_MESSAGE);
+                }catch (IOException ex){
+                    JOptionPane.showMessageDialog(null,"Erro na ligação com o arquivo","Erro",JOptionPane.ERROR_MESSAGE);
+                }catch (ClassNotFoundException cx){
+                    JOptionPane.showMessageDialog(null,"Erro na classe do arquivo","Erro",JOptionPane.ERROR_MESSAGE);
                 }
-
 
             }
         });
@@ -50,10 +54,8 @@ public class TelaFazePedido extends JDialog{
         voltarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GerenciaMesa gerenciaMesa = new GerenciaMesa();
-                gerenciaMesa.pack();
                 dispose();
-                gerenciaMesa.setVisible(true);
+
             }
         });
     }

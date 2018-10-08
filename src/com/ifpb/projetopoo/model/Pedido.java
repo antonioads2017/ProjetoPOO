@@ -1,5 +1,7 @@
 package com.ifpb.projetopoo.model;
 
+import com.ifpb.projetopoo.Exception.CodigoInvalidoException;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -28,7 +30,10 @@ public class Pedido implements Serializable {
      * Construtor da classe
      * */
 
-    public Pedido(Produto produto, int quantidade) {
+    public Pedido(Produto produto, int quantidade) throws CodigoInvalidoException {
+        if(quantidade<=0){
+            throw new CodigoInvalidoException("Quantidade tem que ser positivo");
+        }
         this.produto=produto;
         this.quantidade = quantidade;
         this.data = LocalDate.now();
@@ -43,7 +48,10 @@ public class Pedido implements Serializable {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(int quantidade) throws CodigoInvalidoException {
+        if(quantidade<=0){
+            throw new CodigoInvalidoException("Quantidade tem que ser positivo");
+        }
         this.quantidade = quantidade;
     }
 
@@ -127,13 +135,6 @@ public class Pedido implements Serializable {
 
     @Override
     public String toString() {
-        String atendimento = "";
-        if(atendido==true){
-            atendimento="Sim";
-        }else atendimento="Não";
-        return "Pedido "+numeroPedido+" = |Produto: "+produto+
-                "| Data e Hora:"+data+hora+"| Atendido: "+
-                atendimento+"| Valor Total: "+getValorTotal()+"\n";
-
-                }
+        return "Pedido{" + "produto=" + produto.getNome()+", quantidade=" + quantidade + ", Numero do pedido="+numeroPedido+", valorTotal=" + getValorTotal() +"}\n";
+    }
 }

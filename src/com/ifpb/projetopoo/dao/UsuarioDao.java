@@ -1,10 +1,13 @@
 package com.ifpb.projetopoo.dao;
 
 import com.ifpb.projetopoo.Exception.CPFInvalidoException;
+import com.ifpb.projetopoo.Exception.DataInvalidaException;
 import com.ifpb.projetopoo.model.Produto;
 import com.ifpb.projetopoo.model.Setor;
 import com.ifpb.projetopoo.model.Usuario;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -33,53 +36,13 @@ public class UsuarioDao {
         }
     }
 
-    public Usuario lerDadosUsuario(){
-        Scanner scanner = new Scanner(System.in);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        System.out.println("Informe o CPF");
-        String CPF = scanner.next();
-        System.out.println("Informe seu email");
-        String email=scanner.next();
-        System.out.println("Informe o seu nome:");
-        String nome = scanner.next();
-        System.out.println("Informe seu telefone");
-        String telefone = scanner.next();
-        System.out.println("Informe sua data de nascimento:");
-        String data = scanner.next();
-        LocalDate nascimento = LocalDate.parse(data,formatter);
-        System.out.println("Selecione o seu setor pelo numero: 1 - Atendimento\n2 - Cozinha\n3 - Caixa\n4- Gerencia");
-        int setorUser=scanner.nextInt();
-        Setor setor = null;
-        switch (setorUser) {
-            case 1:
-                setor = Setor.ATENDIMENTO;
-                break;
 
-            case 2:
-                setor = Setor.COZINHA;
-                break;
-
-            case 3:
-                setor = Setor.CAIXA;
-                break;
-
-            case 4:
-                setor = Setor.GERENCIA;
-                break;
-            default: setor = Setor.ATENDIMENTO;
-        }
-        System.out.println("Informe sua senha:");
-        String senha = scanner.next();
-        Usuario newUser = new Usuario(email,senha,CPF,nome,nascimento,setor,telefone);
-        return newUser;
-    }
 
     public boolean cadastrarUsuario(Usuario usuario) throws IOException, CPFInvalidoException {
         for (Usuario u: usuarios){
             if(Objects.equals(usuario.getCPF(),u.getCPF())){
                 throw new CPFInvalidoException("CPF já existe!");
-            }
-            if(Objects.equals(usuario,u)){
+            }else if(Objects.equals(usuario,u)){
                 System.out.println("Email ou senha existentes! Tente novamente");
                 return false;
             }

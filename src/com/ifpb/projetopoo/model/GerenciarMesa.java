@@ -1,6 +1,7 @@
 package com.ifpb.projetopoo.model;
 
 import com.ifpb.projetopoo.Exception.CodigoInvalidoException;
+import com.ifpb.projetopoo.Exception.ComandaInvalidaException;
 import com.ifpb.projetopoo.dao.GerenciaDao;
 
 
@@ -42,7 +43,7 @@ public class GerenciarMesa {
 
     public static Comanda pegaComanda (int numeroMesa){
         for (Comanda comanda: mesas){
-            if(Objects.equals(comanda.getNumeroMesa(),numeroMesa)){
+            if(comanda.getNumeroMesa()==numeroMesa){
                 return comanda;
             }
         }return null;
@@ -56,7 +57,7 @@ public class GerenciarMesa {
      * @return retorna null caso não encontre ou ja haja uma comanda aberta
      * */
 
-    public static boolean abrirComanda(int numeroMesa) throws CodigoInvalidoException {
+    public static boolean abrirComanda(int numeroMesa) throws CodigoInvalidoException, ComandaInvalidaException {
         if(numeroMesa<=0){
             throw new CodigoInvalidoException("Numero de mesa invalida");
         }
@@ -68,12 +69,13 @@ public class GerenciarMesa {
 
             }
         }
-        if(!temComanda){
-            Comanda comanda= new Comanda(numeroMesa);
-            mesas.add(comanda);
+        if(temComanda){
+            throw new ComandaInvalidaException("Comanda já existe!");
+        }
+        else{
+            mesas.add(new Comanda(numeroMesa));
             return true;
         }
-        else return false;
     }
 
 
@@ -106,33 +108,6 @@ public class GerenciarMesa {
     }
 
 
-    public static void pedir(int numeroMesa, Pedido pedido){
-        for (Comanda comanda: mesas){
-            comanda.addPedido(pedido);
-        }
-    }
-
-    /**
-     * Exibe os pedidos de uma mesa
-     * @param numeroMesa identifica a mesa que se deseja ver os pedidos
-     * */
-     public static void viewPedido(int numeroMesa) {
-         for (Comanda comanda : mesas) {
-             if (comanda.getNumeroMesa() == numeroMesa) {
-                 System.out.println(comanda.toString());
-             }
-         }
-     }
-
-    /**
-     * Este metodo cria um pedido para uma mesa específica
-     * @param numeroMesa identifica a mesa que fez o pedido
-     * @param pedido contém as informações das escolhas do cliente
-     * @return true se conseguir abrir o pedido
-     * @return  false se não conseguir abrir o pedido
-     *
-     * */
-
      public static boolean fazPedido(int numeroMesa, Pedido pedido){
         for(Comanda comanda:mesas){
             if(comanda.getNumeroMesa()==numeroMesa){
@@ -153,18 +128,13 @@ public class GerenciarMesa {
       *
       * */
 
-     public static boolean fecharComanda(int numeroMesa, GerenciaDao gerencia) throws IOException {
+     public static boolean fecharComanda(int numeroMesa) throws IOException, ClassNotFoundException {
         int index=-1;
         for (Comanda comanda: mesas){
             if(comanda.getNumeroMesa()==numeroMesa) {
                 if (comanda.Atendidos()) {
-                    try {
-                        gerencia.addComanda(comanda);
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
-                    }
+                        GerenciaDao.addComanda(comanda);
                     index = mesas.indexOf(comanda);
-                    System.out.println("Valor Total: " + comanda.getValorTotal());
                     break;
                 }
                 else break;
@@ -188,10 +158,7 @@ public class GerenciarMesa {
      public static boolean modificarPedido (int idPedido, int numeroMesa, Pedido pedidoNovo){
         for(Comanda comanda:mesas){
             if(comanda.getNumeroMesa()==numeroMesa){
-                List<Pedido> mesa = comanda.getComanda();
-                for (Pedido pedido:mesa){
-                    int index = mesa.indexOf(pedido);
-                    mesa.add(index,pedidoNovo);
+                if(comanda.editarPedido(idPedido,pedidoNovo)){
                     return true;
                 }
             }
@@ -205,7 +172,10 @@ public class GerenciarMesa {
              }
          }return null;
      }
-    public static boolean excluirPedido(int numMesa,int idPedido){
+    public static boolean excluirPedido(int numMesa,int idPedido) throws CodigoInvalidoException {
+         if(numMesa<=0){
+             throw new CodigoInvalidoException("Numero de mesa deve ser positivo!");
+         }
         List<Pedido> pedidos = verPedidos(numMesa);
         if(pedidos!=null){
             for (Pedido p: pedidos){
@@ -215,6 +185,33 @@ public class GerenciarMesa {
                 }
             }
         }return false;
+    }
+    public static List<Pedido> verTodosOsPedidos(int mesa){
+        for(Comanda comanda: mesas){
+            if(comanda.getNumeroMesa()==mesa){
+                return comanda.getComanda();
+            }
+        }
+        return null;
+    }
+    public static int quantPedidosNaoAtendidos(){
+        int quant = 0;
+        for(Comanda comanda: mesas){
+            for(Pedido pedido:comanda.getComanda()){
+                if(!pedido.isAtendido()){
+                    quant++;
+                }
+            }
+        }
+        return quant;
+    }
+    public static boolean atendePedido(int numMesa,int idPedido){
+        for(Comanda comanda: mesas){
+            if(comanda.getNumeroMesa()==numMesa){
+                return comanda.atendePedido(idPedido);
+            }
+        }
+        return false;
     }
 //
 //    private List<Comanda> mesas;

@@ -1,6 +1,7 @@
 package com.ifpb.projetopoo.view;
 
 import com.ifpb.projetopoo.Exception.CPFInvalidoException;
+import com.ifpb.projetopoo.Exception.DataInvalidaException;
 import com.ifpb.projetopoo.dao.UsuarioDao;
 import com.ifpb.projetopoo.model.Setor;
 import com.ifpb.projetopoo.model.Usuario;
@@ -45,6 +46,7 @@ public class TelaConta extends JDialog {
         setContentPane(contentPanel);
         setTitle("Minha Conta");
         setModal(true);
+        setLocationRelativeTo(null);
         Setor setor = (Setor) setorComboBox.getSelectedItem();
 
         buscarButton.addActionListener(new ActionListener() {
@@ -56,9 +58,13 @@ public class TelaConta extends JDialog {
                 nomeTextField.setText(usuario.getNome());
                 cpfTextField.setText(usuario.getCPF());
                 setorComboBox.setSelectedItem(usuario.getSetor());
-
                 telefoneTextField.setText(usuario.getTelefone());
-                dataTextField.setText(new String(usuario.getDataNascimento().toString()));
+                try {
+                    String[] dataN = usuario.getDataNascimento().toString().split("-");
+                    dataTextField.setText(dataN[2]+dataN[1]+dataN[0]);
+                } catch (DataInvalidaException e1) {
+                    JOptionPane.showMessageDialog(null, "DATA INVALIDA","ERRO",JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         excluirButton.addActionListener(new ActionListener() {
@@ -90,15 +96,18 @@ public class TelaConta extends JDialog {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 LocalDate nascimento = LocalDate.parse(dataTextField.getText(),formatter);
                 String telefone = telefoneTextField.getText();
-                Usuario usuarioNovo = new Usuario(login,senha,cpf,nome,nascimento,setor,telefone);
+
 
                 try {
+                    Usuario usuarioNovo = new Usuario(login,senha,cpf,nome,nascimento,setor,telefone);
                     usuarioDao.cadastrarUsuario(usuarioNovo);
                 }  catch (IOException e1) {
                     JOptionPane.showMessageDialog(null, "Arquivo nao encontrado","ERRO",JOptionPane.ERROR_MESSAGE);
                 } catch (CPFInvalidoException e1) {
                     JOptionPane.showMessageDialog(null, "CPF INVÁLIDO","ERRO",JOptionPane.ERROR_MESSAGE);
                     cpfTextField.setBackground(Color.red);
+                }catch (DataInvalidaException e2){
+                    JOptionPane.showMessageDialog(null, "DATA INVALIDA","ERRO",JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

@@ -1,5 +1,6 @@
 package com.ifpb.projetopoo.view;
 
+import com.ifpb.projetopoo.Exception.CodigoInvalidoException;
 import com.ifpb.projetopoo.dao.ProdutoDao;
 import com.ifpb.projetopoo.model.GerenciarMesa;
 import com.ifpb.projetopoo.model.Pedido;
@@ -24,47 +25,51 @@ public class TelaAlterarPedido extends JDialog{
         setContentPane(contentPanel);
         setTitle("Alterar Pedido");
         setModal(true);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         voltarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TelaVerPedidos telaVerPedidos = new TelaVerPedidos();
-                telaVerPedidos.pack();
                 dispose();
-                telaVerPedidos.setVisible(true);
             }
         });
         excluirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(GerenciarMesa.excluirPedido(GerenciaMesa.getMesa(),id)){
-                    JOptionPane.showMessageDialog(null, "Pedido excluido com sucesso!", "Mensagem de Confirmação",
-                            JOptionPane.INFORMATION_MESSAGE);
-                    dispose();
+                try{
+                    if(GerenciarMesa.excluirPedido(TelaVerPedidos.getNumMesa(),id)){
+                        JOptionPane.showMessageDialog(null,"Pedido cancelado!");
+                        dispose();
+                    }
+                }catch (CodigoInvalidoException e1){
+                    JOptionPane.showMessageDialog(null,"Numero da mesa deve ser positivo!","Erro",JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
         modificarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try{
-                    Pedido novo = new Pedido(ProdutoDao.ConsultaProduto(Integer.parseInt
-                            (listProdutos.getSelectedValue().toString().split("-")[0])),(int) quantidadeSpinner1.getValue());
-                    if(novo.equals(GerenciarMesa.pegaComanda(TelaVerPedidos.getNumMesa()).getPedido(id))){
-                        JOptionPane.showMessageDialog(null, "Não houve nenhuma alteração no pedido!",
-                                "Mensagem de Confirmação",
-                                JOptionPane.INFORMATION_MESSAGE);
+                try {
+                    Pedido newP = new Pedido(ProdutoDao.ConsultaProduto(Integer.parseInt
+                            (listProdutos.getSelectedValue().toString().split("-")[0])),(int)quantidadeSpinner1.getValue());
+                    if(newP.equals(GerenciarMesa.pegaComanda(TelaVerPedidos.getNumMesa()).getPedido(id))){
+                        JOptionPane.showMessageDialog(null,"Não ocorreu alteração no pedido");
                     }else{
-                        if(GerenciarMesa.editarPedido(id,TelaVerPedidos.getNumMesa(),novo)){
-                            JOptionPane.showMessageDialog(null, "Pedido alterado com sucesso!",
-                                    "Mensagem de Confirmação",
-                                    JOptionPane.INFORMATION_MESSAGE);
-                            dispose();
+                        if(GerenciarMesa.editarPedido(TelaVerPedidos.getNumMesa(),id,newP)){
+                            JOptionPane.showMessageDialog(null,"Pedido modificado!");
                         }
+                        dispose();
                     }
-                } catch (ClassNotFoundException | IOException e1) {
-                    JOptionPane.showMessageDialog(null, "Arquivo nao encontrado","ERRO",JOptionPane.ERROR_MESSAGE);
+                }catch (CodigoInvalidoException e1){
+                    JOptionPane.showMessageDialog(null,"Quantidade tem ser um valor positivo","Erro",JOptionPane.ERROR_MESSAGE);
+                }catch (IOException ex){
+                    JOptionPane.showMessageDialog(null,"Erro na ligação com o arquivo","Erro",JOptionPane.ERROR_MESSAGE);
+                }catch (ClassNotFoundException cx){
+                    JOptionPane.showMessageDialog(null,"Erro na classe do arquivo","Erro",JOptionPane.ERROR_MESSAGE);
+                }catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(null, "Problema com a conversão do código do produto", "Mensagem de Erro",
+                            JOptionPane.ERROR_MESSAGE);
                 }
-
             }
         });
     }

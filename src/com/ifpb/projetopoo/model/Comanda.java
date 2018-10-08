@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ifpb.projetopoo.Exception.CodigoInvalidoException;
 import com.ifpb.projetopoo.dao.GerenciaDao;
 import com.ifpb.projetopoo.model.Pedido;
 
@@ -29,7 +30,10 @@ public class Comanda implements Serializable {
      * Construtor
      * */
 
-    public Comanda(int numeroMesa) {
+    public Comanda(int numeroMesa) throws CodigoInvalidoException {
+        if(numeroMesa<=0){
+            throw new CodigoInvalidoException("Numero deve ser positivo");
+        }
         numeroComanda=++contador;
         comanda=new ArrayList<>();
         this.numeroMesa = numeroMesa;
@@ -57,7 +61,10 @@ public class Comanda implements Serializable {
         return numeroMesa;
     }
 
-    public void setNumeroMesa(int numeroMesa) {
+    public void setNumeroMesa(int numeroMesa) throws CodigoInvalidoException {
+        if(numeroMesa<=0){
+            throw new CodigoInvalidoException("Numero deve ser positivo");
+        }
         this.numeroMesa = numeroMesa;
     }
 
@@ -81,8 +88,8 @@ public class Comanda implements Serializable {
         return contador;
     }
 
-    public static void setContador(int contador) {
-        Comanda.contador = contador;
+    public static void setContador(int cont) {
+        contador = cont;
     }
 
     /**
@@ -149,6 +156,31 @@ public class Comanda implements Serializable {
 
     public void removerPedido(Pedido pedido){
         comanda.remove(pedido);
+    }
+
+    public boolean editarPedido(int idPedidoAntigo,Pedido novo){
+        if(comanda.size()==0){
+            return false;
+        }else{
+            for (Pedido p:comanda){
+                if(p.getNumeroPedido()==idPedidoAntigo){
+                    comanda.set(comanda.indexOf(p),novo);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public boolean atendePedido(int idPedido){
+        if(comanda.size()>0){
+            for(Pedido pedido:comanda){
+                if(pedido.getNumeroPedido()==idPedido){
+                    pedido.setAtendido(true);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 

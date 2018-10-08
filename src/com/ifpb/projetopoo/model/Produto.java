@@ -22,15 +22,15 @@ public class Produto implements Serializable {
      */
 
     public Produto(int codigo,String nome, String descrição, float precoUnico) throws CodigoInvalidoException, PrecoInvalidoException {
-        this.nome = nome;
-        this.descrição = descrição;
-        if(precoUnico<=0){
-            throw  new PrecoInvalidoException("O valor esta incorreto");
-        }
-        this.precoUnico = precoUnico;
         if(codigo<=0){
             throw new CodigoInvalidoException("O código informado é inválido!");
         }
+        if(precoUnico<=0){
+            throw  new PrecoInvalidoException("O valor esta incorreto");
+        }
+        this.nome = nome;
+        this.descrição = descrição;
+        this.precoUnico = precoUnico;
         this.codigo=codigo;
     }
 
@@ -39,7 +39,10 @@ public class Produto implements Serializable {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(int codigo) throws CodigoInvalidoException {
+        if(codigo<=0){
+            throw new CodigoInvalidoException("O código informado é inválido");
+        }
         this.codigo = codigo;
     }
 
@@ -63,7 +66,10 @@ public class Produto implements Serializable {
         return precoUnico;
     }
 
-    public void setPrecoUnico(float precoUnico){
+    public void setPrecoUnico(float precoUnico) throws PrecoInvalidoException {
+        if(precoUnico<=0){
+            throw  new PrecoInvalidoException("O valor esta incorreto");
+        }
         this.precoUnico = precoUnico;
     }
 
@@ -77,12 +83,15 @@ public class Produto implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Produto produto = (Produto) o;
-        return codigo == produto.codigo;
+        return codigo == produto.codigo &&
+                Float.compare(produto.precoUnico, precoUnico) == 0 &&
+                Objects.equals(nome, produto.nome) &&
+                Objects.equals(descrição, produto.descrição);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigo);
+        return Objects.hash(codigo, nome, descrição, precoUnico);
     }
 
     @Override

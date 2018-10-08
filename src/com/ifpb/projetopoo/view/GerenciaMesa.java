@@ -1,7 +1,9 @@
 package com.ifpb.projetopoo.view;
 
 import com.ifpb.projetopoo.Exception.CodigoInvalidoException;
+import com.ifpb.projetopoo.Exception.ComandaInvalidaException;
 import com.ifpb.projetopoo.dao.GerenciaDao;
+import com.ifpb.projetopoo.model.Comanda;
 import com.ifpb.projetopoo.model.GerenciarMesa;
 
 import javax.swing.*;
@@ -10,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ContainerAdapter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 
 public class GerenciaMesa extends JDialog {
@@ -23,30 +26,25 @@ public class GerenciaMesa extends JDialog {
     private JButton voltarButton;
     private GerenciarMesa gerenciarMesa;
     private static int numMesa;
-    private GerenciaDao gerencia;
 
     public GerenciaMesa(){
         setContentPane(contentPanel);
         setTitle("Gerenciar Mesas");
         setModal(true);
+        setLocationRelativeTo(null);
         gerenciarMesa = new GerenciarMesa();
-        try {
-            gerencia = new GerenciaDao();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         novaComandaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    numMesa = Integer.parseInt(mesaSpinner1.getValue().toString());
-                try {
-                    if(gerenciarMesa.abrirComanda(numMesa)){
-                        JOptionPane.showMessageDialog(null,"Comanda aberta para mesa "+numMesa);
-                    }
-                } catch (CodigoInvalidoException e1) {
-                    JOptionPane.showMessageDialog(null,"Numero de mesa Invalida","Erro",JOptionPane.ERROR_MESSAGE);
-                }
-
+               try{
+                   GerenciarMesa.abrirComanda((int)mesaSpinner1.getValue());
+                   JOptionPane.showMessageDialog(null,"Comanda aberta para mesa "+
+                           (int)mesaSpinner1.getValue());
+               }catch (CodigoInvalidoException e1){
+                   JOptionPane.showMessageDialog(null,"Numero de Mesa Invalido","Erro",JOptionPane.ERROR_MESSAGE);
+               }catch (ComandaInvalidaException e2){
+                   JOptionPane.showMessageDialog(null,"Ja existe uma comanda para mesa "+(int)mesaSpinner1.getValue(),"Erro",JOptionPane.ERROR_MESSAGE);
+               }
             }
         });
 
@@ -54,21 +52,29 @@ public class GerenciaMesa extends JDialog {
         fazerPedidoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                numMesa=Integer.parseInt(mesaSpinner1.getValue().toString());
-                TelaFazePedido telaFazePedido = new TelaFazePedido();
-                telaFazePedido.pack();
-                dispose();
-                telaFazePedido.setVisible(true);
-
+                if(GerenciarMesa.pegaComanda((int)mesaSpinner1.getValue())==null){
+                    JOptionPane.showMessageDialog(null,"Não existe comanda aberta para mesa "+
+                                    (int)mesaSpinner1.getValue(),"Erro",JOptionPane.ERROR_MESSAGE);
+                }else {
+                    TelaFazePedido.setNumMesa((int)mesaSpinner1.getValue());
+                    TelaFazePedido telaFazePedido = new TelaFazePedido();
+                    telaFazePedido.pack();
+                    telaFazePedido.setVisible(true);
+                }
             }
         });
         verPedidosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TelaVerPedidos telaVerPedidos = new TelaVerPedidos();
-                telaVerPedidos.pack();
-                dispose();
-                telaVerPedidos.setVisible(true);
+                if(GerenciarMesa.pegaComanda((int)mesaSpinner1.getValue())==null){
+                    JOptionPane.showMessageDialog(null,"Não existe comanda aberta para mesa "+
+                            (int)mesaSpinner1.getValue(),"Erro",JOptionPane.ERROR_MESSAGE);
+                }else{
+                    TelaVerPedidos.setNumMesa((int)mesaSpinner1.getValue());
+                    TelaVerPedidos telaVerPedidos = new TelaVerPedidos();
+                    telaVerPedidos.pack();
+                    telaVerPedidos.setVisible(true);
+                }
             }
         });
         voltarButton.addActionListener(new ActionListener() {
@@ -83,20 +89,31 @@ public class GerenciaMesa extends JDialog {
         fecharComandaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                numMesa=Integer.parseInt(mesaSpinner1.getValue().toString());
-                try {
-                    if(gerenciarMesa.fecharComanda(numMesa,gerencia)){
-                        JOptionPane.showMessageDialog(null,"Comanda fechada na mesa "+numMesa);
+                Comanda comanda = GerenciarMesa.pegaComanda((int)mesaSpinner1.getValue());
+                if(GerenciarMesa.pegaComanda((int)mesaSpinner1.getValue())==null){
+                    JOptionPane.showMessageDialog(null,"Não existe comanda aberta para mesa "+
+                            (int)mesaSpinner1.getValue(),"Erro",JOptionPane.ERROR_MESSAGE);
+                }else{
+                    if(comanda.Atendidos()){
+                        try {
+                            if(GerenciarMesa.fecharComanda((int)mesaSpinner1.getValue())){
+                                JOptionPane.showMessageDialog(null,
+                                        "Comanda Encerrada com Sucesso!\nValor Total R$"+
+                                                new DecimalFormat("0.00").format(comanda.getValorTotal()));
+                            }
+                        }catch (IOException ex){
+                            JOptionPane.showMessageDialog(null,"Erro na ligação com o arquivo","Erro",JOptionPane.ERROR_MESSAGE);
+                        }catch (ClassNotFoundException cx){
+                            JOptionPane.showMessageDialog(null,"Erro na classe do arquivo","Erro",JOptionPane.ERROR_MESSAGE);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,"A comanda contêm pedidos não atendidos","Erro",JOptionPane.ERROR_MESSAGE);
                     }
-                } catch (IOException e1) {
-                    e1.printStackTrace();
                 }
             }
         });
     }
-    public static int getMesa(){
-        return numMesa;
-    }
+
 
     private void createUIComponents() {
         mesaSpinner1 = new JSpinner();

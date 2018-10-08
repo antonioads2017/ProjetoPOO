@@ -1,6 +1,7 @@
 package com.ifpb.projetopoo.view;
 
 import com.ifpb.projetopoo.Exception.CPFInvalidoException;
+import com.ifpb.projetopoo.Exception.DataInvalidaException;
 import com.ifpb.projetopoo.dao.UsuarioDao;
 import com.ifpb.projetopoo.model.Setor;
 import com.ifpb.projetopoo.model.Usuario;
@@ -40,7 +41,7 @@ public class TelaCadastro extends JDialog {
         setContentPane(contentPanel);
         setTitle("Tela de Cadastro");
         setModal(true);
-        setSize(2000,2000);
+        setLocationRelativeTo(null);
         getRootPane().setDefaultButton(OKButton);
         OKButton.addActionListener(new ActionListener() {
             @Override
@@ -54,9 +55,9 @@ public class TelaCadastro extends JDialog {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 LocalDate nascimento = LocalDate.parse(DataTextField.getText(),formatter);
                 String telefone = TelefoneTextField.getText();
-                Usuario usuario = new Usuario(email,senha,cpf,nome,nascimento,setor,telefone);
 
                 try {
+                    Usuario usuario = new Usuario(email,senha,cpf,nome,nascimento,setor,telefone);
                     if(usuarios.cadastrarUsuario(usuario)){
                         JOptionPane.showMessageDialog(null,"Usuario cadastrado com sucesso");
                     }else{
@@ -67,6 +68,8 @@ public class TelaCadastro extends JDialog {
                 } catch (CPFInvalidoException e1) {
                     JOptionPane.showMessageDialog(null, "CPF INVÁLIDO","ERRO",JOptionPane.ERROR_MESSAGE);
                     CPFTextField.setBackground(Color.red);
+                }catch (DataInvalidaException e2){
+                    JOptionPane.showMessageDialog(null, "DATA INVALIDA","ERRO",JOptionPane.ERROR_MESSAGE);
                 }
 
             }
@@ -75,7 +78,10 @@ public class TelaCadastro extends JDialog {
         cancelarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                TelaLogin telaLogin = new TelaLogin();
+                telaLogin.pack();
                 dispose();
+                telaLogin.setVisible(true);
             }
         });
     }
