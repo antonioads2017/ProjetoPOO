@@ -27,10 +27,11 @@ public class Usuario implements Serializable {
     private Setor setor;
     private String telefone;
 
+
     /**
      * Construtor
-     * */
-
+     * @throws DataInvalidaException trata se a data é menor que a data atual.
+     */
     public Usuario(String email, String senha, String CPF, String nome, LocalDate dataNascimento, Setor setor, String telefone) throws DataInvalidaException {
         if(dataNascimento.isAfter(LocalDate.now())){
             throw  new DataInvalidaException("Data Invalida");
@@ -98,7 +99,7 @@ public class Usuario implements Serializable {
 
     /**
      * Metodo que seta o setor pelo codigo.
-     * @param setor
+     * @param setor, retorna o setor.
      */
     public void setSetor(int setor) {
         if (setor == Setor.ATENDIMENTO.getCodSetor()) {

@@ -129,10 +129,8 @@ public class TelaConta extends JDialog {
         voltarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TelaPrincipal telaPrincipal = new TelaPrincipal();
-                telaPrincipal.pack();
                 dispose();
-                telaPrincipal.setVisible(true);
+
             }
         });
     }
@@ -146,5 +144,8 @@ public class TelaConta extends JDialog {
         MaskFormatter formatter2 = new MaskFormatter("(##)#####-####");
         telefoneTextField = new JFormattedTextField();
         formatter2.install(telefoneTextField);
+        MaskFormatter formatter3 = new MaskFormatter("###.###.###-##");
+        cpfTextField = new JFormattedTextField();
+        formatter3.install(cpfTextField);
     }
 }

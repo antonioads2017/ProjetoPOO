@@ -7,10 +7,9 @@ import java.util.List;
 /** A classe Menu contêm a modelagem de um menu para o dominio.
  * A Classe contêm um ArrayList de Produtos.
  * Recebe, deleta ou altera um produto instanciado.
- * @author Antonio Miguel
- * @author Laires Pereira
- * @version 1.0
- * @since 29-07-2018
+ * @author Antonio
+ * @since 09-10-2018
+ * @version 1.1
  */
 
 public class Menu {

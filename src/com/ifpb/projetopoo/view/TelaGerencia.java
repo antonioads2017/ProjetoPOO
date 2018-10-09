@@ -37,10 +37,8 @@ public class TelaGerencia extends JDialog {
         voltarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TelaPrincipal telaPrincipal = new TelaPrincipal();
-                telaPrincipal.pack();
                 dispose();
-                telaPrincipal.setVisible(true);
+
             }
         });
         visualizarButton.addActionListener(new ActionListener() {

@@ -7,10 +7,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 /** A classe Pedido contêm a modelagem de pedidos dos clientes
- * @author Antonio Miguel
- * @author Laires Pereira
- * @version 1.0
- * @since 29-07-2018
+ * @author Antonio
+ * @since 09-10-2018
+ * @version 1.1
  */
 
 public class Pedido implements Serializable {
@@ -119,11 +118,11 @@ public class Pedido implements Serializable {
     }
 
     public void setNumeroPedido(int numeroPedido) {
-        this.numeroPedido = getContador();
+        this.numeroPedido = numeroPedido;
     }
 
     /**
-     * modificarAtendido altera a informação se este pedido ja foi ou não atendido
+     * Metodo que altera a informação se este pedido ja foi ou não atendido
      * @return true se conseguir definir como ja atendido
      * */
 

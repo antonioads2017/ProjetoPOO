@@ -50,9 +50,8 @@ public class TelaLogin extends JFrame {
                     if(usuarioDao.autenticarUsuario(login,senha)){
                         TelaPrincipal principal = new TelaPrincipal();
                         principal.pack();
-                        dispose();
+                        setVisible(false);
                         principal.setVisible(true);
-                        System.exit(0);
                     }else{
                         JOptionPane.showMessageDialog(null,
                                 "Usuario ou senha invalidos",

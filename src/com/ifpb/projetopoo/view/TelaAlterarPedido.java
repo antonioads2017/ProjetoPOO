@@ -55,10 +55,10 @@ public class TelaAlterarPedido extends JDialog{
                     if(newP.equals(GerenciarMesa.pegaComanda(TelaVerPedidos.getNumMesa()).getPedido(id))){
                         JOptionPane.showMessageDialog(null,"Não ocorreu alteração no pedido");
                     }else{
-                        if(GerenciarMesa.editarPedido(TelaVerPedidos.getNumMesa(),id,newP)){
+                        if(GerenciarMesa.modificarPedido(id,TelaVerPedidos.getNumMesa(),newP)){
                             JOptionPane.showMessageDialog(null,"Pedido modificado!");
+                            dispose();
                         }
-                        dispose();
                     }
                 }catch (CodigoInvalidoException e1){
                     JOptionPane.showMessageDialog(null,"Quantidade tem ser um valor positivo","Erro",JOptionPane.ERROR_MESSAGE);

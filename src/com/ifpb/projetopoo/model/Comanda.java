@@ -6,16 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ifpb.projetopoo.Exception.CodigoInvalidoException;
-import com.ifpb.projetopoo.dao.GerenciaDao;
-import com.ifpb.projetopoo.model.Pedido;
 
 /** A classe Comanda contêm a modelagem de comanda para o dominio.
  * A Classe contêm um ArrayList de Pedidos.
  * Adiciona Pedidos e verifica o atendimento.
  * @author Antonio Miguel
- * @author Laires Pereira
- * @version 1.0
- * @since 29-07-2018
+ * @version 1.1
+ * @since 09-10-2018
  */
 
 public class Comanda implements Serializable {
@@ -44,10 +41,6 @@ public class Comanda implements Serializable {
         return contador;
     }
 
-    /**
-     * Retorna a comanda
-     * @return comanda
-     */
     public List<Pedido> getComanda() {
         return comanda;
     }
@@ -106,6 +99,7 @@ public class Comanda implements Serializable {
     }
 
     /**
+     * Metodo para calcular o valor total da comanda.
      * @return Valor Total retorna o valor total do pedido.
      */
     public float getValorTotal (){
@@ -140,6 +134,11 @@ public class Comanda implements Serializable {
         }return check;
     }
 
+
+    /**
+     * Metodo que envia os pedidos nao atendidos.
+     * @return pedidoList, retorna os pedidos na comanda, null se estiver sem pedido.
+     */
     public List<Pedido> pedidosNaoAtendidos (){
         List<Pedido> pedidoList = new ArrayList<>();
         for(Pedido pedido:comanda){
@@ -150,14 +149,30 @@ public class Comanda implements Serializable {
             return null;
         }return pedidoList;
     }
+
+    /**
+     * Metodo que adiciona pedido na comanda.
+     * @param pedido metodo recebe um pedido.
+     */
     public void adicionarPedido(Pedido pedido){
         comanda.add(pedido);
     }
 
+    /**
+     * Metodo que deleta o pedido na comanda.
+     * @param pedido metoto recebe um pedido.
+     */
     public void removerPedido(Pedido pedido){
         comanda.remove(pedido);
     }
 
+    /**
+     * Metodo que edita o pedido na comanda.
+     * @param idPedidoAntigo metodo recebe o id do pedido.
+     * @param novo metodo recebe o novo pedido.
+     * @return true, se foi o id existe e substitue o pedido.
+     * @return false, se o id não existe.
+     */
     public boolean editarPedido(int idPedidoAntigo,Pedido novo){
         if(comanda.size()==0){
             return false;
@@ -171,6 +186,13 @@ public class Comanda implements Serializable {
         }
         return false;
     }
+
+    /**
+     * Metodo para atender um pedido.
+     * @param idPedido metodo recebe id do pedido.
+     * @return true, se foi atendido.
+     * @return false, se não foi atendido.
+     */
     public boolean atendePedido(int idPedido){
         if(comanda.size()>0){
             for(Pedido pedido:comanda){

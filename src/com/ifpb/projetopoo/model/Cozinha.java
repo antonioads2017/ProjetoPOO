@@ -5,16 +5,12 @@ import java.util.List;
 /**
  * A classe Cozinha representa a entidade cozinha da aplicação
  * Contém um ArrayList com todos os pedidos feitos pelos clientes
- * @author Laires
  * @author Antonio
- * @since 29-07-2018
- * @version 1.0
+ * @since 09-10-2018
+ * @version 1.1
  * */
 
 public class Cozinha {
-
-
-
 
     private static List<Pedido> pedidos = new ArrayList<>();
 

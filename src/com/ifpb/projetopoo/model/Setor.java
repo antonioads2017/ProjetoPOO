@@ -1,13 +1,10 @@
 package com.ifpb.projetopoo.model;
 /** A classe Pedido contêm a modelagem de pedidos dos clientes
- * @author Antonio Miguel
- * @author Laires Pereira
- * @version 1.0
- * @since 29-07-2018
+ * @author Antonio
+ * @since 09-10-2018
+ * @version 1.1
  */
 public enum Setor {
-
-
 
     ATENDIMENTO(1),
     COZINHA(2),

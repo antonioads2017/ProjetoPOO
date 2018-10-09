@@ -23,10 +23,7 @@ public class TelaCozinha extends JDialog {
         voltarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TelaPrincipal telaPrincipal = new TelaPrincipal();
-                telaPrincipal.pack();
                 dispose();
-                telaPrincipal.setVisible(true);
             }
         });
         atenderButton.addActionListener(new ActionListener() {

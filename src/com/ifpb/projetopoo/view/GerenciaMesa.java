@@ -81,10 +81,8 @@ public class GerenciaMesa extends JDialog {
         voltarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TelaPrincipal telaPrincipal = new TelaPrincipal();
-                telaPrincipal.pack();
                 dispose();
-                telaPrincipal.setVisible(true);
+
             }
         });
         fecharComandaButton.addActionListener(new ActionListener() {

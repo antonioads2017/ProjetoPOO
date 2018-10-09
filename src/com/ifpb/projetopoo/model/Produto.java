@@ -6,10 +6,9 @@ import com.ifpb.projetopoo.Exception.PrecoInvalidoException;
 import java.io.*;
 import java.util.Objects;
 /** A classe Pedido contêm a modelagem de pedidos dos clientes
- * @author Antonio Miguel
- * @author Laires Pereira
- * @version 1.0
- * @since 29-07-2018
+ * @author Antonio
+ * @since 09-10-2018
+ * @version 1.1
  */
 public class Produto implements Serializable {
 
@@ -18,9 +17,12 @@ public class Produto implements Serializable {
     private String descrição;
     private float precoUnico;
 
-    /**CONSTRUTOR
-     */
 
+    /**
+     * Construtor
+     * @throws CodigoInvalidoException trata se o codigo é um inteiro positivo.
+     * @throws PrecoInvalidoException trata se o preço é um real positivo.
+     */
     public Produto(int codigo,String nome, String descrição, float precoUnico) throws CodigoInvalidoException, PrecoInvalidoException {
         if(codigo<=0){
             throw new CodigoInvalidoException("O código informado é inválido!");

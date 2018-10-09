@@ -168,12 +168,7 @@ public class TelaProduto extends JDialog{
         sairButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    TelaPrincipal principal = new TelaPrincipal();
-                    principal.pack();
                     dispose();
-                    principal.setVisible(true);
-
-
             }
         });
     }
