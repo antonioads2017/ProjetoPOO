@@ -33,6 +33,7 @@ public class TelaGerencia extends JDialog {
         setTitle("Gerência");
         setModal(true);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         voltarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

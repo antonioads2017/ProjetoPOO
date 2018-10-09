@@ -21,6 +21,7 @@ public class TelaVerPedidos extends JDialog{
         setTitle("Ver Pedidos");
         setModal(true);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,7 +71,8 @@ public class TelaVerPedidos extends JDialog{
                 listModel.addElement(p.getNumeroPedido()+"-"+p.getProduto().getNome()+"Quant.: "+p.getQuantidade()+" Subtotal:"+fm.format(p.getValorTotal()));
             }
             listPedidos.setModel(listModel);
-        }else listPedidos.setModel(null);
+        }
+        else listPedidos.setModel(null);
     }
 
     private void createUIComponents() {

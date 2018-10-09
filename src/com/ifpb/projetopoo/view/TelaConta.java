@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class TelaConta extends JDialog {
     private JPanel contentPanel;
@@ -47,6 +48,7 @@ public class TelaConta extends JDialog {
         setTitle("Minha Conta");
         setModal(true);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         Setor setor = (Setor) setorComboBox.getSelectedItem();
 
         buscarButton.addActionListener(new ActionListener() {
@@ -55,15 +57,18 @@ public class TelaConta extends JDialog {
                 login = emailTextField.getText();
                 senha = new String(passwordField.getPassword());
                 usuario = usuarioDao.consultarUsuario(login, senha);
+                try {
                 nomeTextField.setText(usuario.getNome());
                 cpfTextField.setText(usuario.getCPF());
                 setorComboBox.setSelectedItem(usuario.getSetor());
                 telefoneTextField.setText(usuario.getTelefone());
-                try {
+
                     String[] dataN = usuario.getDataNascimento().toString().split("-");
                     dataTextField.setText(dataN[2]+dataN[1]+dataN[0]);
                 } catch (DataInvalidaException e1) {
                     JOptionPane.showMessageDialog(null, "DATA INVALIDA","ERRO",JOptionPane.ERROR_MESSAGE);
+                }catch (NullPointerException e2){
+                    JOptionPane.showMessageDialog(null,"Email e senha incorretos, corrija-os e busque!","Erro",JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -71,9 +76,11 @@ public class TelaConta extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    System.out.println(usuarioDao.excluirUsuario(usuario.getEmail(),usuario.getSenha()));
+                   if(usuarioDao.excluirUsuario(usuario.getEmail(),usuario.getSenha())){
+                       JOptionPane.showMessageDialog(null,"Usuario excluido com sucesso");
+                   }
                 } catch (IOException e1) {
-                    e1.printStackTrace();
+                    JOptionPane.showMessageDialog(null,"Erro no arquivo usuario","Erro",JOptionPane.ERROR_MESSAGE);
                 }
                 dispose();
             }
@@ -85,22 +92,28 @@ public class TelaConta extends JDialog {
                 try {
                     usuarioDao.excluirUsuario(usuario.getEmail(),usuario.getSenha());
                 } catch (IOException e1) {
-                    e1.printStackTrace();
+                    JOptionPane.showMessageDialog(null,"Erro no arquivo usuario","Erro",JOptionPane.ERROR_MESSAGE);
                 }
                 login = emailTextField.getText();
                 senha = new String(passwordField.getPassword());
                 String nome = nomeTextField.getText();
                 Setor setor = (Setor) setorComboBox.getSelectedItem();
                 String cpf = cpfTextField.getText();
+                LocalDate nascimento = null;
+                try{
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    nascimento = LocalDate.parse(dataTextField.getText(),formatter);
+                }catch (DateTimeParseException e1){
+                    JOptionPane.showMessageDialog(null,"Formato de Data incorreta","ERRO",JOptionPane.ERROR_MESSAGE);
+                }
 
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                LocalDate nascimento = LocalDate.parse(dataTextField.getText(),formatter);
                 String telefone = telefoneTextField.getText();
 
 
                 try {
                     Usuario usuarioNovo = new Usuario(login,senha,cpf,nome,nascimento,setor,telefone);
                     usuarioDao.cadastrarUsuario(usuarioNovo);
+                    JOptionPane.showMessageDialog(null,"Usuario atualizado");
                 }  catch (IOException e1) {
                     JOptionPane.showMessageDialog(null, "Arquivo nao encontrado","ERRO",JOptionPane.ERROR_MESSAGE);
                 } catch (CPFInvalidoException e1) {
@@ -128,5 +141,8 @@ public class TelaConta extends JDialog {
         dataTextField = new JFormattedTextField();
         formatter.install(dataTextField);
         setorComboBox = new JComboBox(Setor.values());
+        MaskFormatter formatter2 = new MaskFormatter("(##)#####-####");
+        telefoneTextField = new JFormattedTextField();
+        formatter2.install(telefoneTextField);
     }
 }

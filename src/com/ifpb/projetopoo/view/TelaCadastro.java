@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class TelaCadastro extends JDialog {
     private JFormattedTextField EmailTextField;
@@ -43,6 +44,7 @@ public class TelaCadastro extends JDialog {
         setModal(true);
         setLocationRelativeTo(null);
         getRootPane().setDefaultButton(OKButton);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -51,26 +53,40 @@ public class TelaCadastro extends JDialog {
                 String nome = NomeTextField.getText();
                 Setor setor = (Setor) SetorcomboBox.getSelectedItem();
                 String cpf = CPFTextField.getText();
+                LocalDate nascimento = null;
 
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                LocalDate nascimento = LocalDate.parse(DataTextField.getText(),formatter);
+                try{
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    nascimento = LocalDate.parse(DataTextField.getText(),formatter);
+                }catch (DateTimeParseException e1){
+                    JOptionPane.showMessageDialog(null,"Formato de Data incorreta","ERRO",JOptionPane.ERROR_MESSAGE);
+                }
+
+
                 String telefone = TelefoneTextField.getText();
 
-                try {
-                    Usuario usuario = new Usuario(email,senha,cpf,nome,nascimento,setor,telefone);
-                    if(usuarios.cadastrarUsuario(usuario)){
-                        JOptionPane.showMessageDialog(null,"Usuario cadastrado com sucesso");
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Usuario ja existe","ERRO",JOptionPane.ERROR_MESSAGE);
+                if(email.equals("")||senha.equals("")||nome.equals("")||cpf.equals("")){
+                    JOptionPane.showMessageDialog(null,"Preencha todos os campos","Aviso",JOptionPane.WARNING_MESSAGE);
+                }else{
+                    try {
+                        Usuario usuario = new Usuario(email,senha,cpf,nome,nascimento,setor,telefone);
+                        if(usuarios.cadastrarUsuario(usuario)){
+                            JOptionPane.showMessageDialog(null,"Usuario cadastrado com sucesso");
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Usuario ja existe","ERRO",JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (IOException e1) {
+                        JOptionPane.showMessageDialog(null, "Arquivo nao encontrado","ERRO",JOptionPane.ERROR_MESSAGE);
+                    } catch (CPFInvalidoException e1) {
+                        JOptionPane.showMessageDialog(null, "CPF INVÁLIDO","ERRO",JOptionPane.ERROR_MESSAGE);
+                        CPFTextField.setBackground(Color.red);
+                    }catch (DataInvalidaException e2){
+                        JOptionPane.showMessageDialog(null, "DATA INVALIDA","ERRO",JOptionPane.ERROR_MESSAGE);
                     }
-                } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(null, "Arquivo nao encontrado","ERRO",JOptionPane.ERROR_MESSAGE);
-                } catch (CPFInvalidoException e1) {
-                    JOptionPane.showMessageDialog(null, "CPF INVÁLIDO","ERRO",JOptionPane.ERROR_MESSAGE);
-                    CPFTextField.setBackground(Color.red);
-                }catch (DataInvalidaException e2){
-                    JOptionPane.showMessageDialog(null, "DATA INVALIDA","ERRO",JOptionPane.ERROR_MESSAGE);
+
                 }
+
+
 
             }
         });
@@ -97,5 +113,9 @@ public class TelaCadastro extends JDialog {
         cpfFormatter.install(CPFTextField);
 
         SetorcomboBox = new JComboBox(Setor.values());
+
+        MaskFormatter formatter2 = new MaskFormatter("(##)#####-####");
+        TelefoneTextField = new JFormattedTextField();
+        formatter2.install(TelefoneTextField);
     }
 }

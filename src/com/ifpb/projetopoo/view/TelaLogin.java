@@ -29,14 +29,12 @@ public class TelaLogin extends JFrame {
         setContentPane(contentPane);
         getRootPane().setDefaultButton(LoginButton);
         setTitle("Tela de Login");
-        setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         CadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TelaCadastro telaCadastro = new TelaCadastro();
                 telaCadastro.pack();
-                dispose();
                 telaCadastro.setVisible(true);
             }
         });

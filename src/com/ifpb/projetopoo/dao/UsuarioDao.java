@@ -43,7 +43,6 @@ public class UsuarioDao {
             if(Objects.equals(usuario.getCPF(),u.getCPF())){
                 throw new CPFInvalidoException("CPF já existe!");
             }else if(Objects.equals(usuario,u)){
-                System.out.println("Email ou senha existentes! Tente novamente");
                 return false;
             }
         }
@@ -65,11 +64,9 @@ public class UsuarioDao {
     public Usuario consultarUsuario(String email, String senha){
         for(Usuario usuario:usuarios){
             if(usuario.autenticUsuario(email,senha)){
-                System.out.println(usuario);
                 return usuario;
             }
         }
-        System.out.println("Usuario não existe!");
         return null;
 
     }

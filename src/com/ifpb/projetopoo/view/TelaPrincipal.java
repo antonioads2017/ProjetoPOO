@@ -20,6 +20,7 @@ public class TelaPrincipal extends JDialog {
         setTitle("Tela Principal");
         setModal(true);
         setResizable(false);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setBounds(0,0,1366,768);
         sairButton.addActionListener(new ActionListener() {
             @Override

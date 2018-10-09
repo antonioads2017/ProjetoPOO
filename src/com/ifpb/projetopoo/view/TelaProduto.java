@@ -34,7 +34,7 @@ public class TelaProduto extends JDialog{
         adicionarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               if(nomeTextField.equals("")||descricaoTextField.equals("")){
+               if(nomeTextField.getText().equals("")||descricaoTextField.getText().equals("")){
                    JOptionPane.showMessageDialog(null,"Por favor, preencha todos os campos!","Aviso",JOptionPane.QUESTION_MESSAGE);
                }else{
                    try{

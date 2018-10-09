@@ -32,6 +32,7 @@ public class GerenciaMesa extends JDialog {
         setTitle("Gerenciar Mesas");
         setModal(true);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         gerenciarMesa = new GerenciarMesa();
         novaComandaButton.addActionListener(new ActionListener() {
             @Override

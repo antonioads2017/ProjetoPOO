@@ -18,6 +18,7 @@ public class TelaCozinha extends JDialog {
         setContentPane(contentPanel);
         setModal(true);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cozinha");
         voltarButton.addActionListener(new ActionListener() {
             @Override

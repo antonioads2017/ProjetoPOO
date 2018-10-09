@@ -168,7 +168,7 @@ public class GerenciarMesa {
      public static List<Pedido> verPedidos(int numMesa){
          for(Comanda comanda: mesas){
              if(comanda.getNumeroMesa()==numMesa){
-                 return comanda.pedidosNaoAtendidos();
+                 return comanda.getComanda();
              }
          }return null;
      }

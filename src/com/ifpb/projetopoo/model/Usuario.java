@@ -32,7 +32,7 @@ public class Usuario implements Serializable {
      * */
 
     public Usuario(String email, String senha, String CPF, String nome, LocalDate dataNascimento, Setor setor, String telefone) throws DataInvalidaException {
-        if(dataNascimento==LocalDate.now()){
+        if(dataNascimento.isAfter(LocalDate.now())){
             throw  new DataInvalidaException("Data Invalida");
         }
         this.email = email;
@@ -78,7 +78,7 @@ public class Usuario implements Serializable {
     }
 
     public LocalDate getDataNascimento() throws DataInvalidaException {
-        if(dataNascimento==LocalDate.now()){
+        if(dataNascimento.isAfter(LocalDate.now())){
             throw  new DataInvalidaException("Data Invalida");
         }
         return dataNascimento;

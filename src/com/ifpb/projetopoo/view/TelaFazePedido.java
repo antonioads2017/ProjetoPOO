@@ -27,6 +27,7 @@ public class TelaFazePedido extends JDialog{
         setTitle("Fazer Pedidos");
         setModal(true);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
 
         pedirButton.addActionListener(new ActionListener() {
