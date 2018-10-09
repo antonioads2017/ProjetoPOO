@@ -2,6 +2,7 @@ package com.ifpb.projetopoo.view;
 
 import com.ifpb.projetopoo.Exception.CodigoInvalidoException;
 import com.ifpb.projetopoo.Exception.PrecoInvalidoException;
+import com.ifpb.projetopoo.Exception.ProdutoInvalidoException;
 import com.ifpb.projetopoo.dao.ProdutoDao;
 import com.ifpb.projetopoo.model.Produto;
 
@@ -121,34 +122,49 @@ public class TelaProduto extends JDialog{
             }
         });
 
-//        atualizarButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                try {
-//                    ProdutoDao.deletarProduto((int)codigoSpinner.getValue());
-//                }catch (ClassNotFoundException | IOException e1) {
-//                    JOptionPane.showMessageDialog(null, "Arquivo nao encontrado","ERRO",JOptionPane.ERROR_MESSAGE);
-//                }
-//                String nome = nomeTextField.getText();
-//                String descricao = descricaoTextField.getText();
-//                float preco = Float.parseFloat(precoTextField.getText().replace(',','.'));
-//                try {
-//                    produto = new Produto((int)codigoSpinner.getValue(),nome,descricao,preco);
-//                } catch (CodigoInvalidoException e1) {
-//                    e1.printStackTrace();
-//                } catch (PrecoInvalidoException e1) {
-//                    e1.printStackTrace();
-//                }
-//                try{
-//                    if(ProdutoDao.AddProduto(produto)){
-//                        JOptionPane.showMessageDialog(null,"Produto atualizado com sucesso");
-//                        limpar();
-//                    }
-//                } catch (ClassNotFoundException | IOException e1) {
-//                    JOptionPane.showMessageDialog(null, "Arquivo nao encontrado","ERRO",JOptionPane.ERROR_MESSAGE);
-//                }
-//            }
-//        });
+        atualizarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Produto desatualizado = null;
+                try{
+                    desatualizado = ProdutoDao.ConsultaProduto((int)codigoSpinner.getValue());
+                    if(desatualizado==null){
+                        JOptionPane.showMessageDialog(null,"Produto não existe com codigo "+(int)codigoSpinner.getValue());
+                    }else{
+                        try{
+                            Produto atualizado = new Produto((int)codigoSpinner.getValue(),nomeTextField.getText(),descricaoTextField.getText(),
+                                    Float.parseFloat(precoTextField.getText().replace(',','.')));
+                            if(desatualizado.equals(atualizado)){
+                                JOptionPane.showMessageDialog(null,"Não houve modificações");
+                            }else{
+                                try{
+                                    if(ProdutoDao.atualizarProduto((int)codigoSpinner.getValue(),atualizado)){
+                                        JOptionPane.showMessageDialog(null,"Produto atualizado!");
+                                        limpar();
+                                    }else{
+                                        JOptionPane.showMessageDialog(null,"Produto não atualizado");
+                                    }
+                                }catch (IOException ex){
+                                    JOptionPane.showMessageDialog(null,"Erro na ligação com o arquivo","Erro",JOptionPane.ERROR_MESSAGE);
+                                }catch (ClassNotFoundException cx){
+                                    JOptionPane.showMessageDialog(null,"Erro na classe do arquivo","Erro",JOptionPane.ERROR_MESSAGE);
+                                }
+                            }
+                        }catch (ProdutoInvalidoException e1){
+                            JOptionPane.showMessageDialog(null,"Produto invalido","Erro",JOptionPane.ERROR_MESSAGE);
+                        }catch (PrecoInvalidoException e2){
+                            JOptionPane.showMessageDialog(null,"Preço invalido","Erro",JOptionPane.ERROR_MESSAGE);
+                        }catch (CodigoInvalidoException e3){
+                            JOptionPane.showMessageDialog(null,"Codigo invalido","Erro",JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }catch (IOException ex){
+                    JOptionPane.showMessageDialog(null,"Erro na ligação com o arquivo","Erro",JOptionPane.ERROR_MESSAGE);
+                }catch (ClassNotFoundException cx){
+                    JOptionPane.showMessageDialog(null,"Erro na classe do arquivo","Erro",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
         sairButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -83,6 +83,7 @@ public class TelaConta extends JDialog {
                     JOptionPane.showMessageDialog(null,"Erro no arquivo usuario","Erro",JOptionPane.ERROR_MESSAGE);
                 }
                 dispose();
+
             }
         });
 
@@ -91,37 +92,38 @@ public class TelaConta extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 try {
                     usuarioDao.excluirUsuario(usuario.getEmail(),usuario.getSenha());
+                    login = emailTextField.getText();
+                    senha = new String(passwordField.getPassword());
+                    String nome = nomeTextField.getText();
+                    Setor setor = (Setor) setorComboBox.getSelectedItem();
+                    String cpf = cpfTextField.getText();
+                    LocalDate nascimento = null;
+                    try{
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                        nascimento = LocalDate.parse(dataTextField.getText(),formatter);
+                    }catch (DateTimeParseException e1){
+                        JOptionPane.showMessageDialog(null,"Formato de Data incorreta","ERRO",JOptionPane.ERROR_MESSAGE);
+                    }
+
+                    String telefone = telefoneTextField.getText();
+                    try {
+                        Usuario usuarioNovo = new Usuario(login,senha,cpf,nome,nascimento,setor,telefone);
+                        usuarioDao.cadastrarUsuario(usuarioNovo);
+                        JOptionPane.showMessageDialog(null,"Usuario atualizado");
+                    }  catch (IOException e1) {
+                        JOptionPane.showMessageDialog(null, "Arquivo nao encontrado","ERRO",JOptionPane.ERROR_MESSAGE);
+                    } catch (CPFInvalidoException e1) {
+                        JOptionPane.showMessageDialog(null, "CPF INVÁLIDO","ERRO",JOptionPane.ERROR_MESSAGE);
+                        cpfTextField.setBackground(Color.red);
+                    }catch (DataInvalidaException e2){
+                        JOptionPane.showMessageDialog(null, "DATA INVALIDA","ERRO",JOptionPane.ERROR_MESSAGE);
+                    }
                 } catch (IOException e1) {
-                    JOptionPane.showMessageDialog(null,"Erro no arquivo usuario","Erro",JOptionPane.ERROR_MESSAGE);
-                }
-                login = emailTextField.getText();
-                senha = new String(passwordField.getPassword());
-                String nome = nomeTextField.getText();
-                Setor setor = (Setor) setorComboBox.getSelectedItem();
-                String cpf = cpfTextField.getText();
-                LocalDate nascimento = null;
-                try{
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                    nascimento = LocalDate.parse(dataTextField.getText(),formatter);
-                }catch (DateTimeParseException e1){
-                    JOptionPane.showMessageDialog(null,"Formato de Data incorreta","ERRO",JOptionPane.ERROR_MESSAGE);
-                }
-
-                String telefone = telefoneTextField.getText();
+                    JOptionPane.showMessageDialog(null,"Erro no arquivo usuario","Erro",JOptionPane.ERROR_MESSAGE);}
 
 
-                try {
-                    Usuario usuarioNovo = new Usuario(login,senha,cpf,nome,nascimento,setor,telefone);
-                    usuarioDao.cadastrarUsuario(usuarioNovo);
-                    JOptionPane.showMessageDialog(null,"Usuario atualizado");
-                }  catch (IOException e1) {
-                    JOptionPane.showMessageDialog(null, "Arquivo nao encontrado","ERRO",JOptionPane.ERROR_MESSAGE);
-                } catch (CPFInvalidoException e1) {
-                    JOptionPane.showMessageDialog(null, "CPF INVÁLIDO","ERRO",JOptionPane.ERROR_MESSAGE);
-                    cpfTextField.setBackground(Color.red);
-                }catch (DataInvalidaException e2){
-                    JOptionPane.showMessageDialog(null, "DATA INVALIDA","ERRO",JOptionPane.ERROR_MESSAGE);
-                }
+
+
             }
         });
         voltarButton.addActionListener(new ActionListener() {

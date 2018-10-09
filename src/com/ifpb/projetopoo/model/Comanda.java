@@ -88,8 +88,8 @@ public class Comanda implements Serializable {
         return contador;
     }
 
-    public static void setContador(int cont) {
-        contador = cont;
+    public static void setContador(int contador) {
+        Comanda.contador = contador;
     }
 
     /**

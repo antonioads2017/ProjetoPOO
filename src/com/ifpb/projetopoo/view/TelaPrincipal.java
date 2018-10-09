@@ -25,7 +25,10 @@ public class TelaPrincipal extends JDialog {
         sairButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                TelaLogin telaLogin = new TelaLogin();
+                telaLogin.pack();
                 dispose();
+                telaLogin.setVisible(true);
             }
         });
         minhaContaButton.addActionListener(new ActionListener() {
@@ -33,7 +36,6 @@ public class TelaPrincipal extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 TelaConta telaConta = new TelaConta();
                 telaConta.pack();
-                dispose();
                 telaConta.setVisible(true);
             }
         });
@@ -42,7 +44,6 @@ public class TelaPrincipal extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 TelaGerencia telaGerencia = new TelaGerencia();
                 telaGerencia.pack();
-                dispose();
                 telaGerencia.setVisible(true);
             }
         });
@@ -51,7 +52,6 @@ public class TelaPrincipal extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 GerenciaMesa gerenciaMesa = new GerenciaMesa();
                 gerenciaMesa.pack();
-                dispose();
                 gerenciaMesa.setVisible(true);
             }
         });
@@ -60,7 +60,6 @@ public class TelaPrincipal extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 TelaProduto telaProduto = new TelaProduto();
                 telaProduto.pack();
-                dispose();
                 telaProduto.setVisible(true);
             }
         });
@@ -69,7 +68,6 @@ public class TelaPrincipal extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 TelaCozinha telaCozinha = new TelaCozinha();
                 telaCozinha.pack();
-                dispose();
                 telaCozinha.setVisible(true);
             }
         });
